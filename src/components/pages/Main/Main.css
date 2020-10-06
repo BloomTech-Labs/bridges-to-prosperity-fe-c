@@ -69,3 +69,7 @@
 .address {
   color: rgb(196, 195, 207);
 }
+
+.test {
+  border: 1px black solid;
+}

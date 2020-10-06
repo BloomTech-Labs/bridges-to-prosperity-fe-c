@@ -25,7 +25,7 @@ const initialView = {
 };
 
 const initialStatus = 'Complete';
-const initialStyle = 'mapbox://styles/jrhemann/ckfcmzx8d3s9y19qt9fuvfcn0';
+const initialStyle = 'mapbox://styles/simonh24/ckfykq5h60cox19qp2zfrjfm7';
 
 const initialMargin = 300;
 const initialLong = 29.538;

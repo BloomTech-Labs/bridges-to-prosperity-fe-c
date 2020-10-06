@@ -14,7 +14,9 @@ const Main = () => {
         <Store>
           <Layout className="layout">
             <Content className="content">
-              <Map />
+              <div className="test">
+                <Map className="test2" />
+              </div>
             </Content>
           </Layout>
         </Store>
