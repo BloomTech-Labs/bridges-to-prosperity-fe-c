@@ -15,8 +15,8 @@ const initialState = {
 };
 
 const initialView = {
-  latitude: -2.1602,
-  longitude: 29.538,
+  latitude: -2.2602,
+  longitude: 31.238,
   width: '100vw',
   height: '110vh',
   zoom: 8.2,
