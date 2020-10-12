@@ -15,11 +15,11 @@ const initialState = {
 };
 
 const initialView = {
-  latitude: -2.2602,
-  longitude: 31.238,
-  width: '100vw',
-  height: '110vh',
-  zoom: 8.2,
+  latitude: -2.2202,
+  longitude: 29.638,
+  width: '100%',
+  height: '80vh',
+  zoom: 8.5,
   pitch: 0,
   bearing: -22,
 };
@@ -39,6 +39,7 @@ export const ContextSearchData = React.createContext();
 export const ContextLong = React.createContext();
 export const ContextLat = React.createContext();
 export const ContextView = React.createContext();
+export const ContextOpen = React.createContext();
 
 const Store = ({ children }) => {
   const [viewport, setViewport] = useState(initialView);
@@ -49,6 +50,7 @@ const Store = ({ children }) => {
   const [collapseMargin, setCollapseMargin] = useState(initialMargin);
   const [long, setLong] = useState(initialLong);
   const [lat, setLat] = useState(initialLat);
+  const [open, setOpen] = useState(false);
 
   return (
     <ContextView.Provider value={[viewport, setViewport]}>
@@ -58,9 +60,11 @@ const Store = ({ children }) => {
             <ContextMargin.Provider value={[collapseMargin, setCollapseMargin]}>
               <ContextStyle.Provider value={[style, setStyle]}>
                 <ContextStatus.Provider value={[status, setStatus]}>
-                  <Context.Provider value={[state, setState]}>
-                    {children}
-                  </Context.Provider>
+                  <ContextOpen.Provider value={[open, setOpen]}>
+                    <Context.Provider value={[state, setState]}>
+                      {children}
+                    </Context.Provider>
+                  </ContextOpen.Provider>
                 </ContextStatus.Provider>
               </ContextStyle.Provider>
             </ContextMargin.Provider>

@@ -30,16 +30,17 @@ import './map.css';
 import LeftSideBar from '../LeftSideBar/LeftSideBar';
 import Footer from '../Footer/Footer';
 
-const StyledCard = styled(Card)`
-  height: 50vh;
-`;
-
 const InfoContainer = styled.div`
   width: 35%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 const MapContainer = styled.div`
-  width: 35%;
+  width: 50%;
+  margin: 5%;
   display: flex;
   flex-flow: column;
   justify-content: space-between;
@@ -51,6 +52,26 @@ const BigContainer = styled.div`
   display: flex;
   justify-content: space-around;
 `;
+
+let test = {
+  geometry: {
+    type: 'Point',
+    coordinates: [-2.2280555, 29.573334],
+  },
+  properties: {
+    bridge_image: 'Waiting on Data',
+    bridge_name: 'Serugeme',
+    bridge_type: 'Suspended',
+    district_id: 26,
+    district_name: 'Ruhango',
+    id: 1042,
+    individuals_served: 4111,
+    project_code: 1012480,
+    project_stage: 'Complete',
+    province_id: 2,
+    province_name: 'Southern Province',
+  },
+};
 
 const Map = () => {
   const mapRef = useRef();
@@ -85,7 +106,7 @@ const Map = () => {
   const [searchData, setSearchData] = useContext(ContextSearchData);
 
   //state of currently clicked on bridge marker
-  const [selectedBridge, setSelectedBridge] = useState(null);
+  const [selectedBridge, setSelectedBridge] = useState(test);
 
   //state of selected bridge passed to Sidebar
   const [state, setState] = useContext(Context);
@@ -176,12 +197,12 @@ const Map = () => {
   return (
     <BigContainer>
       <InfoContainer>
+        <IconGroup />
         <ImageBox selectedBridge={selectedBridge} />
         <InfoBox selectedBridge={selectedBridge} />
       </InfoContainer>
       <MapContainer>
-        <IconGroup />
-        <StyledCard>
+        <Card>
           <ReactMapGL
             ref={mapRef}
             {...viewport}
@@ -280,7 +301,7 @@ const Map = () => {
             </h3>
           </Drawer> */}
           </ReactMapGL>
-        </StyledCard>
+        </Card>
       </MapContainer>
     </BigContainer>
   );

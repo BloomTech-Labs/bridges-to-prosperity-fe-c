@@ -1,11 +1,11 @@
-import React, { useContext, useState } from 'react';
-import { ContextStatus } from '../Store';
+import React, { useContext, useState, useEffect } from 'react';
+import { ContextStatus, ContextOpen } from '../Store';
 import { Card, Modal } from '@material-ui/core';
 import Search from '../Search/Search';
 import styled from 'styled-components';
 
 const StyledCard = styled(Card)`
-  margin: 10% 0 10% 0;
+  margin: 0 0 0 10%;
   height: 10vh;
   display: flex;
   justify-content: center;
@@ -19,7 +19,16 @@ const IconDiv = styled.div`
 
 const IconGroup = () => {
   const [status, setStatus] = useContext(ContextStatus);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useContext(ContextOpen);
+
+  useEffect(() => {
+    const listener = e => {
+      if (e.key === 'Escape') {
+        setOpen(false);
+      }
+    };
+    window.addEventListener('keydown', listener);
+  }, []);
 
   const handleOpen = () => {
     setOpen(true);

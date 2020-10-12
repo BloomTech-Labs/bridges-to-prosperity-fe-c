@@ -1,5 +1,10 @@
 import React, { useState, useContext } from 'react';
-import { ContextSearchData, ContextView, ContextStatus } from '../Store';
+import {
+  ContextSearchData,
+  ContextView,
+  ContextStatus,
+  ContextOpen,
+} from '../Store';
 import * as d3 from 'd3';
 import { FlyToInterpolator } from 'react-map-gl';
 import './Search.css';
@@ -12,6 +17,7 @@ const Search = () => {
   const [lat, setLat] = useState();
   const [status, setStatus] = useContext(ContextStatus);
   const [viewport, setViewport] = useContext(ContextView);
+  const [open, setOpen] = useContext(ContextOpen);
   const dataList = searchData;
 
   //List everything to exclude with filtering
@@ -46,12 +52,16 @@ const Search = () => {
     const flyViewport = {
       latitude: lat,
       longitude: long,
-      zoom: 14,
-      transitionDuration: 5000,
+      zoom: 10,
+      transitionDuration: 1000,
       transitionInterpolator: new FlyToInterpolator(),
       transitionEasing: d3.easeCubic,
     };
     setViewport(flyViewport);
+    setOpen(false);
+    console.log(viewport);
+    console.log(flyViewport);
+    console.log([lat, long]);
   };
 
   const setCoord = (lat, long) => {
@@ -82,6 +92,7 @@ const Search = () => {
               // style={{ margin: 0 }}
               onMouseEnter={() => setCoord(d.latitude, d.longitude)}
               onClick={() => {
+                setCoord(d.latitude, d.longitude);
                 FlyTo();
                 setStatus(d.project_stage);
               }}
