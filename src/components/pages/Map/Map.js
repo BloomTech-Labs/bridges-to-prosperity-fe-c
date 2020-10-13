@@ -129,7 +129,7 @@ const Map = () => {
   //hits endpoint and gets all bridges
   useEffect(() => {
     axios
-      .get('https://b2ptc.herokuapp.com/bridges')
+      .get('https://labs27-c-bridges-api.herokuapp.com/bridges')
       .then(response => {
         response.data.map(element => {
           //pushes every element to array variable
@@ -170,15 +170,25 @@ const Map = () => {
         properties: {
           id: data[i].id,
           project_code: data[i].project_code,
-          bridge_name: data[i].bridge_name,
+          bridge_site_name: data[i].bridge_site_name,
           bridge_type: data[i].bridge_type,
           district_id: data[i].district_id,
-          district_name: data[i].district_name,
+          district: data[i].district,
           province_id: data[i].province_id,
-          province_name: data[i].province_name,
+          province: data[i].province,
           project_stage: data[i].project_stage,
           individuals_served: data[i].individuals_served,
           bridge_image: data[i].bridge_image,
+          latitude: data[i].latitude,
+          longitude: data[i].longitude,
+          individuals_directly_served: data[i].individuals_directly_served,
+          assessment_date: data[i].assessment_date,
+          sector: data[i].sector,
+          cell: data[i].cell,
+          original_community_col: data[i].original_community_col,
+          prov_id: data[i].prov_id,
+          district_id: data[i].district_id,
+          cell_id: data[i].cell_id,
         },
       });
     }
