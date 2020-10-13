@@ -1,5 +1,6 @@
 import React from 'react';
-import { Card } from '@material-ui/core';
+import { Card, Typography } from '@material-ui/core';
+import theme from '../../../styles/theme-overrides.js';
 import styled from 'styled-components';
 
 const StyledCard = styled(Card)`
@@ -20,30 +21,30 @@ const InfoBox = selectedBridge => {
     <StyledCard>
       {selectedBridge.selectedBridge ? (
         <StyledDiv>
-          <h3>
+          <Typography variant="h4">
             Bridge Name: {selectedBridge.selectedBridge.properties.bridge_name}
-          </h3>
-          <h3>
+          </Typography>
+          <Typography variant="h4">
             Province: {selectedBridge.selectedBridge.properties.province_name}
-          </h3>
-          <h3>
+          </Typography>
+          <Typography variant="h4">
             District: {selectedBridge.selectedBridge.properties.district_name}
-          </h3>
-          <h3>
+          </Typography>
+          <Typography variant="h4">
             Project Stage:{' '}
             {selectedBridge.selectedBridge.properties.project_stage}
-          </h3>
-          <h3>
+          </Typography>
+          <Typography variant="h4">
             Project Code:{' '}
             {selectedBridge.selectedBridge.properties.project_code}
-          </h3>
-          <h3>
+          </Typography>
+          <Typography variant="h4">
             Bridge Type: {selectedBridge.selectedBridge.properties.bridge_type}
-          </h3>
-          <h3>
+          </Typography>
+          <Typography variant="h4">
             Individuals Served:{' '}
             {selectedBridge.selectedBridge.properties.individuals_served}
-          </h3>
+          </Typography>
         </StyledDiv>
       ) : (
         <StyledDiv>no selected bridge</StyledDiv>
