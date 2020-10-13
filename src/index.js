@@ -18,6 +18,7 @@ import { HomePage } from './components/pages/Home';
 import { ExampleDataViz } from './components/pages/ExampleDataViz';
 import { config } from './utils/oktaConfig';
 import { LoadingComponent } from './components/common';
+import { GraphPage } from './components/pages/Graph';
 import Main from './components/pages/Main/Main';
 
 ReactDOM.render(
@@ -44,6 +45,7 @@ function App() {
     <Security {...config} onAuthRequired={authHandler}>
       <Switch>
         <Route path="/main" component={Main} />
+        <Route path="/graph" component={GraphPage} />
         <Route path="/login" component={LoginPage} />
         <Route path="/implicit/callback" component={LoginCallback} />
         {/* any of the routes you need secured should be registered as SecureRoutes */}
