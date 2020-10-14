@@ -201,7 +201,7 @@ const Map = () => {
         <IconGroup />
         <ImageBox selectedBridge={selectedBridge} />
         {/* insert the add location  */}
-        <AddLocation />
+        
 
         <InfoBox selectedBridge={selectedBridge} />
       </InfoContainer>
