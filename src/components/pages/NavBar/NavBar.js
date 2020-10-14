@@ -30,30 +30,6 @@ const TestDivTwo = styled.div`
   height: 10vh;
 `;
 
-const TestDivThree = styled.div`
-  position: absolute;
-  background-color: white;
-  width: 25%;
-  height: 10vh;
-  margin-left: 25%;
-`;
-
-const TestDivFour = styled.div`
-  position: absolute;
-  background-color: white;
-  width: 25%;
-  height: 10vh;
-  margin-left: 50%;
-`;
-
-const TestDivFive = styled.div`
-  position: absolute;
-  background-color: white;
-  width: 25%;
-  height: 10vh;
-  margin-left: 75%;
-`;
-
 const InfoDiv = styled.div`
   display: flex;
   width: 40%;
@@ -70,6 +46,7 @@ const InfoLink = styled(Link)`
   position: relative;
   width: 25%;
   height: 10vh;
+  padding: 3.5% 0;
 `;
 
 const StyledButton = styled(Button)`
@@ -83,13 +60,19 @@ theme.typography.h3 = {
   color: '#161345',
 };
 
+theme.typography.h4 = {
+  fontSize: '1.4rem',
+  fontWeight: 600,
+  color: '#161345',
+};
+
 const NavBar = () => {
   const [mouseOver, setMouseOver] = useState(false);
   const [infoOver, setInfoOver] = useState(false);
   const [partnerOver, setPartnerOver] = useState(false);
   const [actionOver, setActionOver] = useState(false);
-  const [donateOver, setDonateOver] = useState(false);
   const handleChange = () => {
+    //  To reduce the other functions, switch case detecting the id of the element being moused over.
     setMouseOver(prev => !prev);
   };
   const handleInfoOver = () => {
@@ -101,13 +84,14 @@ const NavBar = () => {
   const handleActionOver = () => {
     setActionOver(prev => !prev);
   };
-  const handleDonateOver = () => {
-    setDonateOver(prev => !prev);
-  };
   return (
     <ThemeProvider theme={theme}>
       {/* div is the whole nav bar */}
-      <StyledDiv onMouseEnter={handleChange} onMouseLeave={handleChange}>
+      <StyledDiv
+        onMouseEnter={handleChange}
+        onMouseLeave={handleChange}
+        id="big_nav"
+      >
         <Slide in={mouseOver} direction="right">
           {/* testdiv is the blue background */}
           <TestDiv></TestDiv>
@@ -129,35 +113,41 @@ const NavBar = () => {
             <TestDivTwo></TestDivTwo>
           </Slide>
           <InfoLink onMouseEnter={handleInfoOver} onMouseLeave={handleInfoOver}>
-            <Typography variant="h3" align="center">
+            <Typography variant="h4" align="center">
               Learn
             </Typography>
           </InfoLink>
           <Slide in={partnerOver} direction="down">
-            <TestDivThree></TestDivThree>
+            <TestDivTwo
+              style={{
+                marginLeft: '25%',
+              }}
+            ></TestDivTwo>
           </Slide>
           <InfoLink
             onMouseEnter={handlePartnerOver}
             onMouseLeave={handlePartnerOver}
           >
-            <Typography variant="h3" align="center">
+            <Typography variant="h4" align="center">
               Partner
             </Typography>
           </InfoLink>
           <Slide in={actionOver} direction="down">
-            <TestDivFour></TestDivFour>
+            <TestDivTwo
+              style={{
+                marginLeft: '50%',
+              }}
+            ></TestDivTwo>
           </Slide>
           <InfoLink
             onMouseEnter={handleActionOver}
             onMouseLeave={handleActionOver}
           >
-            <Typography variant="h3" align="center">
+            <Typography variant="h4" align="center">
               Take Action
             </Typography>
           </InfoLink>
           <InfoLink
-            onMouseEnter={handleDonateOver}
-            onMouseLeave={handleDonateOver}
             style={{
               padding: '1%',
             }}
