@@ -16,48 +16,31 @@ const FormContainer = styled.div`
 `
 
 export default function Add_Lo_container() {
-    const [showForm, setShow] = useState(false);
-    const formSub = useRef();
-    const [adding,setAdding]= useState(false)
-
-    const formSubmit = (item) => {
-        console.log(item)
-            
-    }
-    
-
-
-
+const [showForm,setShow] =useState(false)
 
     
     return (
         <div>
             {
             showForm !== true ?
-                    <button onClick={() => {
-                        setShow(!showForm);
-                    }}>
+                    <button onClick={() => setShow(!showForm)}>
                         Add New Location
 
                     </button>
                     :
                     <Modal
                         visible={showForm}
-                        onCancel={() => setShow(false)}
-                        onOk={() =>formSub.current.submit()}
+                        onCancel={()=>setShow(false)}
                     >
                     
                  
                     <FormContainer>
                     <h4>Add A Location</h4>
                             <Form
-                                ref={formSub}
-                                onFinish={item => formSubmit(item)}
-                                
                             >
                             <Form.Item
                                 label="Bridge Name"
-                                name="bridge_name"
+                                name="Bridge Name"
                                 rules={[
                                 {
                                     required: true,
@@ -95,15 +78,7 @@ export default function Add_Lo_container() {
                             </Form.Item>
                         
                         </Form>
-                        </FormContainer>
-                        {
-                            adding ?
-                                <div>hello</div>
-                                :
-                                ''
-                            
-                            
-                        }
+                    </FormContainer>
             </Modal>
             }
             

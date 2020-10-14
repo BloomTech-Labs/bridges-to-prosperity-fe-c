@@ -18,11 +18,8 @@ const FormContainer = styled.div`
 export default function Add_Lo_container() {
     const [showForm, setShow] = useState(false);
     const formSub = useRef();
-    const [adding,setAdding]= useState(false)
-
     const formSubmit = (item) => {
         console.log(item)
-            
     }
     
 
@@ -52,8 +49,7 @@ export default function Add_Lo_container() {
                     <h4>Add A Location</h4>
                             <Form
                                 ref={formSub}
-                                onFinish={item => formSubmit(item)}
-                                
+                                onFinish={item=>formSubmit(item)}
                             >
                             <Form.Item
                                 label="Bridge Name"
@@ -95,15 +91,7 @@ export default function Add_Lo_container() {
                             </Form.Item>
                         
                         </Form>
-                        </FormContainer>
-                        {
-                            adding ?
-                                <div>hello</div>
-                                :
-                                ''
-                            
-                            
-                        }
+                    </FormContainer>
             </Modal>
             }
             

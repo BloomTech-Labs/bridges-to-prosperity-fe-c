@@ -22,7 +22,6 @@ export default function Add_Lo_container() {
 
     const formSubmit = (item) => {
         console.log(item)
-            
     }
     
 
@@ -98,9 +97,9 @@ export default function Add_Lo_container() {
                         </FormContainer>
                         {
                             adding ?
-                                <div>hello</div>
+                                
                                 :
-                                ''
+                                
                             
                             
                         }

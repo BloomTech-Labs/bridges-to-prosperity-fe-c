@@ -16,18 +16,8 @@ const FormContainer = styled.div`
 `
 
 export default function Add_Lo_container() {
-    const [showForm, setShow] = useState(false);
-    const formSub = useRef();
-    const [adding,setAdding]= useState(false)
-
-    const formSubmit = (item) => {
-        console.log(item)
-            
-    }
-    
-
-
-
+    const [showForm, setShow] = useState(false)
+    const formSub = useRef()
 
     
     return (
@@ -35,6 +25,7 @@ export default function Add_Lo_container() {
             {
             showForm !== true ?
                     <button onClick={() => {
+                        console.log(formSub.current.);
                         setShow(!showForm);
                     }}>
                         Add New Location
@@ -43,8 +34,7 @@ export default function Add_Lo_container() {
                     :
                     <Modal
                         visible={showForm}
-                        onCancel={() => setShow(false)}
-                        onOk={() =>formSub.current.submit()}
+                        onCancel={()=>setShow(false)}
                     >
                     
                  
@@ -52,12 +42,10 @@ export default function Add_Lo_container() {
                     <h4>Add A Location</h4>
                             <Form
                                 ref={formSub}
-                                onFinish={item => formSubmit(item)}
-                                
                             >
                             <Form.Item
                                 label="Bridge Name"
-                                name="bridge_name"
+                                name="Bridge Name"
                                 rules={[
                                 {
                                     required: true,
@@ -95,15 +83,7 @@ export default function Add_Lo_container() {
                             </Form.Item>
                         
                         </Form>
-                        </FormContainer>
-                        {
-                            adding ?
-                                <div>hello</div>
-                                :
-                                ''
-                            
-                            
-                        }
+                    </FormContainer>
             </Modal>
             }
             

@@ -22,7 +22,7 @@ export default function Add_Lo_container() {
 
     const formSubmit = (item) => {
         console.log(item)
-            
+        setAdding(t)
     }
     
 
