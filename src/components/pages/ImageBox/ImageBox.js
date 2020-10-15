@@ -11,13 +11,22 @@ const StyledCard = styled(Card)`
 `;
 
 const ImageBox = selectedBridge => {
+  console.log(selectedBridge.selectedBridge.properties.after_img, 'HERE');
   return (
     <StyledCard>
-      {selectedBridge.selectedBridge ? (
-        <p>{selectedBridge.selectedBridge.properties.bridge_image}</p>
+      <img
+        src={selectedBridge.selectedBridge.properties.after_img}
+        // width="250"
+        // height="200"
+        style={{ width: 300, height: 200, position: 'center' }}
+        // margin-left="100"
+      />
+      <img src={selectedBridge.selectedBridge.properties.before_img} />
+      {/* {selectedBridge.selectedBridge ? (
+        <p>{selectedBridge.selectedBridge.properties.after_img}</p>
       ) : (
         <p>no selected bridge</p>
-      )}
+      )} */}
     </StyledCard>
   );
 };

@@ -189,6 +189,7 @@ const Map = () => {
           prov_id: data[i].prov_id,
           district_id: data[i].district_id,
           cell_id: data[i].cell_id,
+          after_img: data[i].after_img,
         },
       });
     }
