@@ -33,6 +33,7 @@ import Footer from '../Footer/Footer';
 
 const InfoContainer = styled.div`
   width: 35%;
+  margin-left: 5%;
   display: flex;
   flex-flow: column;
   justify-content: center;
@@ -41,7 +42,7 @@ const InfoContainer = styled.div`
 
 const MapContainer = styled.div`
   width: 50%;
-  margin: 5%;
+  margin: 0 5% 0 5%;
   display: flex;
   flex-flow: column;
   justify-content: space-between;
@@ -252,9 +253,9 @@ const Map = () => {
               </Marker>
             ))}
 
-            <div className="footerHolder">
+            {/* <div className="footerHolder">
               <Footer />
-            </div>
+            </div> */}
             {/* controls for zooming in and out*/}
             <div className="zoom-controls">
               <NavigationControl

@@ -8,6 +8,17 @@ import {
 import * as d3 from 'd3';
 import { FlyToInterpolator } from 'react-map-gl';
 import './Search.css';
+import { Card } from '@material-ui/core';
+import styled from 'styled-components';
+
+const StyledCard = styled(Card)`
+  width: 15%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  margin: 5% 42.5%;
+`;
 
 const Search = () => {
   const [searchData, setSearchData] = useContext(ContextSearchData);
@@ -70,7 +81,7 @@ const Search = () => {
   };
 
   return (
-    <div>
+    <StyledCard>
       {/* search bar */}
       <div className="searchbar">
         <input
@@ -110,7 +121,7 @@ const Search = () => {
           );
         })}
       </div>
-    </div>
+    </StyledCard>
   );
 };
 

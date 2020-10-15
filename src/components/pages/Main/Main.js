@@ -6,16 +6,15 @@ import Store from '../Store';
 import ImageBox from '../ImageBox/ImageBox';
 import { Card } from '@material-ui/core';
 import styled from 'styled-components';
+import NavBar from '../NavBar/NavBar';
 
 const StyledDiv = styled.div`
   display: flex;
 `;
 
-const StyledCard = styled(Card)`
-  margin-left: 10%;
-  margin-top: 10%;
-  width: 35%;
-  height: 55vh;
+const WholeDiv = styled.div`
+  display: flex;
+  flex-flow: column;
 `;
 
 //destructing components out of Layout component
@@ -39,11 +38,14 @@ const Main = () => {
   //   </div>
   // );
   return (
-    <StyledDiv>
-      <Store>
-        <Map />
-      </Store>
-    </StyledDiv>
+    <WholeDiv>
+      <NavBar />
+      <StyledDiv>
+        <Store>
+          <Map />
+        </Store>
+      </StyledDiv>
+    </WholeDiv>
   );
 };
 
