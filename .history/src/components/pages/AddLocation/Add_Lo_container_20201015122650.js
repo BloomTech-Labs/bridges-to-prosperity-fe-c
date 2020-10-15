@@ -174,15 +174,11 @@ export default function Add_Lo_container() {
                   </Form.Item>
                   {/* Sector id */}
                   <Form.Item label="Sector" name="sector_id">
-                    <Input style={{ width: stringWidth }} />
-                  </Form.Item>
-                  {/* District id */}
-                  <Form.Item label="District Id" name="district_id">
-                    <Input style={{ width: stringWidth }} />
+                    <Input style={{ width: '40%' }} />
                   </Form.Item>
                   {/* Cell Id */}
                   <Form.Item label="Cell Id" name="cell_id">
-                    <Input style={{ width: stringWidth }} />
+                    <Input style={{ width: '40%' }} />
                   </Form.Item>
                 </Form>
               </div>

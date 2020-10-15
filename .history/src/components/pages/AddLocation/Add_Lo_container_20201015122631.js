@@ -21,7 +21,7 @@ export default function Add_Lo_container() {
   const [adding, setAdding] = useState(false);
   const [complete, setComplete] = useState(false);
 
-  const stringWidth = '70%';
+    const stringWidth = '70%';
 
   const formSubmit = item => {
     console.log(item);
@@ -172,17 +172,13 @@ export default function Add_Lo_container() {
                   <Form.Item label="Providence Id" name="prov_id">
                     <Input style={{ width: stringWidth }} />
                   </Form.Item>
-                  {/* Sector id */}
-                  <Form.Item label="Sector" name="sector_id">
-                    <Input style={{ width: stringWidth }} />
-                  </Form.Item>
-                  {/* District id */}
+                  {/* District Id*/}
                   <Form.Item label="District Id" name="district_id">
-                    <Input style={{ width: stringWidth }} />
+                                              <Input style={{ width: 'stringWidth }} />
                   </Form.Item>
                   {/* Cell Id */}
                   <Form.Item label="Cell Id" name="cell_id">
-                    <Input style={{ width: stringWidth }} />
+                    <Input style={{ width: '40%' }} />
                   </Form.Item>
                 </Form>
               </div>
