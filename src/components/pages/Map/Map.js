@@ -15,6 +15,8 @@ import InfoBox from '../InfoBox/InfoBox';
 import IconGroup from '../IconGroup/IconGroup';
 import { Card } from '@material-ui/core';
 import styled from 'styled-components';
+import bg from '../../../bg.png';
+import bg3 from '../../../bg3.png';
 
 import {
   Context,
@@ -33,19 +35,23 @@ import Footer from '../Footer/Footer';
 const InfoContainer = styled.div`
   width: 35%;
   margin-left: 5%;
+  padding: 1% 5% 1% 0;
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center;
+  background-image: url(${bg});
 `;
 
 const MapContainer = styled.div`
   width: 50%;
   margin: 0 5% 0 5%;
+  padding: 1%;
   display: flex;
   flex-flow: column;
   justify-content: space-between;
   align-items: space-between;
+  background-image: url(${bg3});
 `;
 
 const BigContainer = styled.div`
@@ -186,14 +192,14 @@ const Map = () => {
   }
 
   // allows user to press "ESC" key to exit popup
-  useEffect(() => {
-    const listener = e => {
-      if (e.key === 'Escape') {
-        setSelectedBridge(null);
-      }
-    };
-    window.addEventListener('keydown', listener);
-  }, []);
+  // useEffect(() => {
+  //   const listener = e => {
+  //     if (e.key === 'Escape') {
+  //       setSelectedBridge(null);
+  //     }
+  //   };
+  //   window.addEventListener('keydown', listener);
+  // }, []);
 
   return (
     <BigContainer>

@@ -63,7 +63,7 @@ const Search = () => {
     const flyViewport = {
       latitude: lat,
       longitude: long,
-      zoom: 10,
+      zoom: 15,
       transitionDuration: 1000,
       transitionInterpolator: new FlyToInterpolator(),
       transitionEasing: d3.easeCubic,

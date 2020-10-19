@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { ContextStatus, ContextOpen } from '../Store';
-import { Card, Modal } from '@material-ui/core';
+import { Card, Modal, Backdrop } from '@material-ui/core';
 import Search from '../Search/Search';
 import styled from 'styled-components';
 
@@ -40,7 +40,15 @@ const IconGroup = () => {
 
   return (
     <>
-      <Modal open={open} onClose={handleClose}>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
         <Search />
       </Modal>
       <StyledCard>
