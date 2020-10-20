@@ -28,7 +28,7 @@ const ImageBox = selectedBridge => {
       src: beforeImg || NotFound,
       // src: before,
 
-      width: 5,
+      width: 4,
       height: 3,
     },
     {
@@ -36,7 +36,7 @@ const ImageBox = selectedBridge => {
 
       // src: () => (typeof afterImg === undefined ? NotFound : afterImg),
 
-      width: 7,
+      width: 4,
       height: 3,
     },
   ];

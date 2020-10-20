@@ -22,21 +22,23 @@ const ImageBox = selectedBridge => {
   const props = selectedBridge.selectedBridge.properties;
   const beforeImg = selectedBridge.selectedBridge.properties.before_img;
   const afterImg = selectedBridge.selectedBridge.properties.after_img;
-
+  const hh = undefined;
+  const y = 'hell';
+  console.log([typeof hh, typeof y]);
   const images = [
     {
-      src: beforeImg || NotFound,
-      // src: before,
+      // src: selectedBridge.selectedBridge.properties.after_img || NotFound,
+      src: () => (beforeImg === undefined ? NotFound : beforeImg),
 
-      width: 5,
+      width: 4,
       height: 3,
     },
     {
-      src: afterImg || NotFound,
+      // src: selectedBridge.selectedBridge.properties.before_img || NotFound,
 
-      // src: () => (typeof afterImg === undefined ? NotFound : afterImg),
+      src: () => (afterImg === undefined ? NotFound : afterImg),
 
-      width: 7,
+      width: 4,
       height: 3,
     },
   ];

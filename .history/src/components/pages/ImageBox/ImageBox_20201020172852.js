@@ -20,23 +20,21 @@ const ImageBox = selectedBridge => {
   console.log(selectedBridge.selectedBridge.properties.after_img, 'HERE');
 
   const props = selectedBridge.selectedBridge.properties;
-  const beforeImg = selectedBridge.selectedBridge.properties.before_img;
-  const afterImg = selectedBridge.selectedBridge.properties.after_img;
-
+  const beforeImg = selectedBridge.selectedBridge.properties.before_img
+  const afterImg = selectedBridge.selectedBridge.properties.after_img
   const images = [
     {
-      src: beforeImg || NotFound,
-      // src: before,
-
-      width: 5,
+      // src: selectedBridge.selectedBridge.properties.after_img || NotFound,
+      src: NotFound,
+      width: 4,
       height: 3,
     },
     {
-      src: afterImg || NotFound,
+      // src: selectedBridge.selectedBridge.properties.before_img || NotFound,
+      
+      src:{()=>'yellow'},
 
-      // src: () => (typeof afterImg === undefined ? NotFound : afterImg),
-
-      width: 7,
+      width: 4,
       height: 3,
     },
   ];

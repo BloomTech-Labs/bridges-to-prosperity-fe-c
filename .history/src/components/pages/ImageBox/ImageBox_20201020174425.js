@@ -25,18 +25,18 @@ const ImageBox = selectedBridge => {
 
   const images = [
     {
-      src: beforeImg || NotFound,
-      // src: before,
+      // src: selectedBridge.selectedBridge.properties.after_img || NotFound,
+      src: () => (typeof beforeImg === undefined ? NotFound : beforeImg),
 
-      width: 5,
+      width: 4,
       height: 3,
     },
     {
-      src: afterImg || NotFound,
+      // src: selectedBridge.selectedBridge.properties.before_img || NotFound,
 
-      // src: () => (typeof afterImg === undefined ? NotFound : afterImg),
+      src: () => (typeof afterImg === undefined ? NotFound : afterImg),
 
-      width: 7,
+      width: 4,
       height: 3,
     },
   ];
