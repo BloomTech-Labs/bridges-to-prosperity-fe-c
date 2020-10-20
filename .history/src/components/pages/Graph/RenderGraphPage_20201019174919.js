@@ -63,6 +63,7 @@ const RenderGraphPage = props => {
           config={{
             displayModeBar: false,
             responsive: true,
+            // fillFrame: true,
           }}
         />
       ) : (

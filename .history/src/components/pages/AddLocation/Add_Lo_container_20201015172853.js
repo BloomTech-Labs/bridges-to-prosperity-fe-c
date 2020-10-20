@@ -21,18 +21,17 @@ export default function Add_Lo_container() {
   const formSub = useRef();
   const [adding, setAdding] = useState(false);
   const [complete, setComplete] = useState(false);
-  const [formData, setFormData] = useState(null);
-  const [results, setResults] = useState();
+  const [formData, setFormData] = useState({});
 
   const stringWidth = '70%';
 
   const formSubmit = item => {
-    // const postData = { ...item, assesment_date: formData.d };
-    console.log(item);
-    Axios.post('https://labs27-c-bridges-api.herokuapp.com/bridges', item)
+    const postData = { ...item, assesment_data: formData };
+    console.log(postData);
+    debugger;
+    Axios.post('https://labs27-c-bridges-api.herokuapp.com/bridges', postData)
       .then(res => {
         console.log(res.data);
-        setResults('complete');
         setAdding(true);
 
         setTimeout(() => {
@@ -45,20 +44,7 @@ export default function Add_Lo_container() {
           setAdding(false);
         }, 1250);
       })
-      .catch(err => {
-        console.log(err);
-        setAdding(true);
-        setResults('Complete');
-
-        setTimeout(() => {
-          setComplete(true);
-        }, 600);
-        setTimeout(() => {
-          setShow(false);
-          setComplete(false);
-          setAdding(false);
-        }, 1250);
-      });
+      .catch(err => console.log(err));
   };
 
   return (
@@ -85,7 +71,7 @@ export default function Add_Lo_container() {
                   //   If adding show circular progress for loading
                   <CircularProgress />
                 ) : (
-                  <h2>{results}</h2>
+                  <h2>Added New Bridge!!</h2>
                 )}
               </div>
             ) : (
@@ -97,7 +83,7 @@ export default function Add_Lo_container() {
                   style={{ display: 'flex', flexDirection: 'column' }}
                 >
                   {/* bridge Name */}
-                  {/* <Form.Item
+                  <Form.Item
                     label="Bridge Name"
                     name="bridge_name"
                     rules={[
@@ -108,8 +94,7 @@ export default function Add_Lo_container() {
                     ]}
                   >
                     <Input style={{ width: stringWidth }} />
-                  </Form.Item> */}
-
+                  </Form.Item>
                   {/* project code */}
                   <Form.Item
                     label="Project Code"
@@ -185,7 +170,7 @@ export default function Add_Lo_container() {
                     <InputNumber style={{ width: stringWidth }} />
                   </Form.Item>
                   {/* Assesment Date */}
-                  <Form.Item label="Assesment Date" name="assesment_date">
+                  <Form.Item label="Assesment Date" name="assesment_data">
                     <DatePicker onChange={data => setFormData(data)} />
                   </Form.Item>
                   {/* Community Served */}

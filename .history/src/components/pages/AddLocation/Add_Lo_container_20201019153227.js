@@ -97,7 +97,7 @@ export default function Add_Lo_container() {
                   style={{ display: 'flex', flexDirection: 'column' }}
                 >
                   {/* bridge Name */}
-                  {/* <Form.Item
+                  <Form.Item
                     label="Bridge Name"
                     name="bridge_name"
                     rules={[
@@ -108,7 +108,7 @@ export default function Add_Lo_container() {
                     ]}
                   >
                     <Input style={{ width: stringWidth }} />
-                  </Form.Item> */}
+                  </Form.Item>
 
                   {/* project code */}
                   <Form.Item

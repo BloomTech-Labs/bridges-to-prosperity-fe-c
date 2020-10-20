@@ -97,7 +97,7 @@ export default function Add_Lo_container() {
                   style={{ display: 'flex', flexDirection: 'column' }}
                 >
                   {/* bridge Name */}
-                  {/* <Form.Item
+                  <Form.Item
                     label="Bridge Name"
                     name="bridge_name"
                     rules={[
@@ -108,7 +108,7 @@ export default function Add_Lo_container() {
                     ]}
                   >
                     <Input style={{ width: stringWidth }} />
-                  </Form.Item> */}
+                  </Form.Item>
 
                   {/* project code */}
                   <Form.Item
@@ -185,7 +185,7 @@ export default function Add_Lo_container() {
                     <InputNumber style={{ width: stringWidth }} />
                   </Form.Item>
                   {/* Assesment Date */}
-                  <Form.Item label="Assesment Date" name="assesment_date">
+                  <Form.Item label="Assesment Date" name="assesment_data">
                     <DatePicker onChange={data => setFormData(data)} />
                   </Form.Item>
                   {/* Community Served */}

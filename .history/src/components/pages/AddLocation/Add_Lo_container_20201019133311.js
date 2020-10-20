@@ -27,8 +27,8 @@ export default function Add_Lo_container() {
   const stringWidth = '70%';
 
   const formSubmit = item => {
-    // const postData = { ...item, assesment_date: formData.d };
-    console.log(item);
+    // const postData = { ...item, assesment_data: formData };
+    // console.log(postData);
     Axios.post('https://labs27-c-bridges-api.herokuapp.com/bridges', item)
       .then(res => {
         console.log(res.data);
@@ -48,7 +48,7 @@ export default function Add_Lo_container() {
       .catch(err => {
         console.log(err);
         setAdding(true);
-        setResults('Complete');
+        setResults('fail');
 
         setTimeout(() => {
           setComplete(true);
@@ -106,10 +106,9 @@ export default function Add_Lo_container() {
                         message: 'Please Enter A Bridge Name',
                       },
                     ]}
-                  >
-                    <Input style={{ width: stringWidth }} />
+                  > */}
+                  {/* <Input style={{ width: stringWidth }} />
                   </Form.Item> */}
-
                   {/* project code */}
                   <Form.Item
                     label="Project Code"
@@ -124,7 +123,7 @@ export default function Add_Lo_container() {
                     <InputNumber style={{ width: stringWidth }} />
                   </Form.Item>
                   {/* longitude */}
-                  <Form.Item
+                  {/* <Form.Item
                     label="Longitude"
                     name="longitude"
                     rules={[
@@ -135,9 +134,9 @@ export default function Add_Lo_container() {
                     ]}
                   >
                     <InputNumber style={{ width: stringWidth }} />
-                  </Form.Item>
+                  </Form.Item> */}
                   {/* Latitude */}
-                  <Form.Item
+                  {/* <Form.Item
                     label="Latitude"
                     name="latitude"
                     rules={[
@@ -148,66 +147,66 @@ export default function Add_Lo_container() {
                     ]}
                   >
                     <InputNumber style={{ width: stringWidth }} />
-                  </Form.Item>
+                  </Form.Item> */}
                   {/* Province */}
-                  <Form.Item label="Province" name="province">
+                  {/* <Form.Item label="Province" name="province">
                     <Input style={{ width: stringWidth }} />
                   </Form.Item>
                   {/* District */}
-                  <Form.Item label="District" name="district">
+                  {/* <Form.Item label="District" name="district">
                     <Input style={{ width: stringWidth }} />
-                  </Form.Item>
+                  </Form.Item> */}
                   {/* Sector */}
-                  <Form.Item label="Sector" name="sector">
+                  {/* <Form.Item label="Sector" name="sector">
                     <Input style={{ width: stringWidth }} />
-                  </Form.Item>
+                  </Form.Item> */}
                   {/* Cell */}
-                  <Form.Item label="Cell" name="cell">
+                  {/* <Form.Item label="Cell" name="cell">
                     <Input style={{ width: stringWidth }} />
-                  </Form.Item>
+                  </Form.Item> */}
                   {/* Bridge Site */}
-                  <Form.Item label="Bridge Site" name="bridge_site_name">
+                  {/* <Form.Item label="Bridge Site" name="bridge_site_name">
                     <Input style={{ width: stringWidth }} />
-                  </Form.Item>
+                  </Form.Item> */}
                   {/* Project Stage */}
-                  <Form.Item label="Project Stage" name="project_stage">
+                  {/* <Form.Item label="Project Stage" name="project_stage">
                     <Input style={{ width: stringWidth }} />
-                  </Form.Item>
+                  </Form.Item> */}
                   {/* Bridge Type */}
-                  <Form.Item label="Bridge Type" name="bridge_type">
+                  {/* <Form.Item label="Bridge Type" name="bridge_type">
                     <Input style={{ width: stringWidth }} />
-                  </Form.Item>
+                  </Form.Item> */}
                   {/* Individuals directly serverd */}
-                  <Form.Item
+                  {/* <Form.Item
                     label="Individuals Directly Served"
                     name="individuals_directly_served"
                   >
                     <InputNumber style={{ width: stringWidth }} />
-                  </Form.Item>
+                  </Form.Item> */}
                   {/* Assesment Date */}
-                  <Form.Item label="Assesment Date" name="assesment_date">
+                  {/* <Form.Item label="Assesment Date" name="assesment_data">
                     <DatePicker onChange={data => setFormData(data)} />
-                  </Form.Item>
+                  </Form.Item> */}
                   {/* Community Served */}
-                  <Form.Item label="Community Served" name="community_served">
+                  {/* <Form.Item label="Community Served" name="community_served">
                     <Input style={{ width: stringWidth }} />
-                  </Form.Item>
+                  </Form.Item> */}
                   {/* Prov Id */}
-                  <Form.Item label="Providence Id" name="prov_id">
+                  {/* <Form.Item label="Providence Id" name="prov_id">
                     <Input style={{ width: stringWidth }} />
-                  </Form.Item>
+                  </Form.Item> */}
                   {/* Sector id */}
-                  <Form.Item label="Sector" name="sector_id">
+                  {/* <Form.Item label="Sector" name="sector_id">
                     <Input style={{ width: stringWidth }} />
-                  </Form.Item>
+                  </Form.Item> */}
                   {/* District id */}
-                  <Form.Item label="District Id" name="district_id">
+                  {/* <Form.Item label="District Id" name="district_id">
                     <Input style={{ width: stringWidth }} />
-                  </Form.Item>
+                  </Form.Item> */}
                   {/* Cell Id */}
-                  <Form.Item label="Cell Id" name="cell_id">
+                  {/* <Form.Item label="Cell Id" name="cell_id">
                     <Input style={{ width: stringWidth }} />
-                  </Form.Item>
+                  </Form.Item>  */}
                 </Form>
               </div>
             )}

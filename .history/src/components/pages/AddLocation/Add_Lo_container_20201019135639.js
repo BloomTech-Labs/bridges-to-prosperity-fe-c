@@ -48,7 +48,7 @@ export default function Add_Lo_container() {
       .catch(err => {
         console.log(err);
         setAdding(true);
-        setResults('Complete');
+        setResults(err.detail);
 
         setTimeout(() => {
           setComplete(true);
@@ -106,10 +106,9 @@ export default function Add_Lo_container() {
                         message: 'Please Enter A Bridge Name',
                       },
                     ]}
-                  >
-                    <Input style={{ width: stringWidth }} />
+                  > */}
+                  {/* <Input style={{ width: stringWidth }} />
                   </Form.Item> */}
-
                   {/* project code */}
                   <Form.Item
                     label="Project Code"
@@ -185,7 +184,7 @@ export default function Add_Lo_container() {
                     <InputNumber style={{ width: stringWidth }} />
                   </Form.Item>
                   {/* Assesment Date */}
-                  <Form.Item label="Assesment Date" name="assesment_date">
+                  <Form.Item label="Assesment Date" name="assesment_data">
                     <DatePicker onChange={data => setFormData(data)} />
                   </Form.Item>
                   {/* Community Served */}
