@@ -18,6 +18,15 @@ const StyledCard = styled(Card)`
   justify-content: center;
   align-items: center;
   margin: 5% 42.5%;
+
+  @media (max-width: 1024px) {
+    width: 30%;
+    margin: 5% 35%;
+  }
+  @media (max-width: 600px) {
+    width: 45%;
+    margin: 5% 27.5%;
+  }
 `;
 
 const Search = () => {
@@ -32,7 +41,17 @@ const Search = () => {
   const dataList = searchData;
 
   //List everything to exclude with filtering
-  const exclude = ['id', 'after_img', 'before_img', 'prov_id', 'district_id'];
+  const exclude = [
+    'after_img',
+    'before_img',
+    'prov_id',
+    'district_id',
+    'sector_id',
+    'cell_id',
+    'original_community_col',
+    'indviduals_directly_served',
+    'asssessment-date',
+  ];
 
   //filter function for filtering search data out of dataList
   const filterData = value => {
@@ -40,9 +59,9 @@ const Search = () => {
     if (lowercasedValue === '') setFilterDataList([]);
     else {
       const filteredData = dataList.filter(item => {
-        console.log(dataList, item, 'DATA ITEM');
+        // console.log(dataList, item, 'DATA ITEM');
         return Object.keys(item).some(key => {
-          console.log(key, 'KEY');
+          // console.log(key, 'KEY');
           return exclude.includes(key)
             ? false
             : item[key]
@@ -65,16 +84,16 @@ const Search = () => {
     const flyViewport = {
       latitude: lat,
       longitude: long,
-      zoom: 10,
+      zoom: 15,
       transitionDuration: 1000,
       transitionInterpolator: new FlyToInterpolator(),
       transitionEasing: d3.easeCubic,
     };
     setViewport(flyViewport);
     setOpen(false);
-    console.log(viewport);
-    console.log(flyViewport);
-    console.log([lat, long]);
+    // console.log(viewport);
+    // console.log(flyViewport);
+    // console.log([lat, long]);
   };
 
   const setCoord = (lat, long) => {

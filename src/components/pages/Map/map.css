@@ -9,12 +9,12 @@
 } */
 
 .zoom-controls {
-  margin: 1% 0 0 96%;
+  /* margin: 1% 0 0 96%; */
   width: 30px;
   height: 100px;
-  position: relative;
-  top: 0;
-  right: 0;
+  position: absolute;
+  top: 20px;
+  right: 20px;
 }
 .footerHolder {
   margin-top: 10px;
@@ -42,14 +42,25 @@ body {
 .mini-view {
   /* margin-bottom: 10px;
   margin-right: 10px; */
-  position: relative;
-  /* bottom: 0;
-  right: 0; */
-  margin: 63% 0 0 89%;
+  position: absolute;
+  bottom: 40px;
+  right: 20px;
+  /* margin: 50% 0 0 88%; */
   border-radius: 4px;
   height: 65px;
   width: 97px;
 }
+
+/* @media screen and (max-width: 1024px) {
+  .mini-view {
+    margin: 515px 0 0 795px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .mini-view {
+    margin: 200px 0 0 200px;
+  }
+} */
 
 .satellite {
   max-width: 100%;

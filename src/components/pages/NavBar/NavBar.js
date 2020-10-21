@@ -2,13 +2,30 @@ import React, { useState } from 'react';
 import theme from '../../../styles/theme-overrides.js';
 import styled from 'styled-components';
 import { ThemeProvider } from '@material-ui/core/styles';
-import { Typography, Fade, Slide, Link, Button } from '@material-ui/core';
+import {
+  Typography,
+  Fade,
+  Slide,
+  Link,
+  Button,
+  Modal,
+  Backdrop,
+} from '@material-ui/core';
+import LearnModal from './LearnModal';
+import PartnerModal from './PartnerModal';
+import ActionModal from './ActionModal';
 
 const StyledDiv = styled.div`
   display: flex;
-  margin-bottom: 25px;
   position: relative;
   justify-content: space-between;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
 `;
 
 const HomeDiv = styled.div`
@@ -21,6 +38,10 @@ const TestDiv = styled.div`
   background-color: #66c3e3;
   width: 100%;
   height: 10vh;
+
+  @media (max-width: 600px) {
+    height: 50vh;
+  }
 `;
 
 const TestDivTwo = styled.div`
@@ -28,12 +49,27 @@ const TestDivTwo = styled.div`
   background-color: white;
   width: 25%;
   height: 10vh;
+  border-radius: 20px;
+
+  @media (max-width: 600px) {
+    visibility: hidden;
+  }
 `;
 
 const InfoDiv = styled.div`
   display: flex;
   width: 40%;
   position: relative;
+
+  @media (max-width: 1024px) {
+    width: 60%;
+  }
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 const SmallIcon = styled.img`
@@ -47,6 +83,13 @@ const InfoLink = styled(Link)`
   width: 25%;
   height: 10vh;
   padding: 3.5% 0;
+
+  @media (max-width: 600px) {
+    padding: 0;
+    margin: 0;
+    width: 50%;
+    height: auto;
+  }
 `;
 
 const StyledButton = styled(Button)`
@@ -71,7 +114,9 @@ const NavBar = () => {
   const [infoOver, setInfoOver] = useState(false);
   const [partnerOver, setPartnerOver] = useState(false);
   const [actionOver, setActionOver] = useState(false);
-  const [galleryOver, setGalleryOver] = useState(false);
+  const [openInfo, setOpenInfo] = useState(false);
+  const [openPartner, setOpenPartner] = useState(false);
+  const [openAction, setOpenAction] = useState(false);
   const handleChange = () => {
     //  To reduce the other functions, switch case detecting the id of the element being moused over.
     setMouseOver(prev => !prev);
@@ -79,14 +124,20 @@ const NavBar = () => {
   const handleInfoOver = () => {
     setInfoOver(prev => !prev);
   };
+  const handleLearnClick = () => {
+    setOpenInfo(prev => !prev);
+  };
   const handlePartnerOver = () => {
     setPartnerOver(prev => !prev);
+  };
+  const handlePartnerClick = () => {
+    setOpenPartner(prev => !prev);
   };
   const handleActionOver = () => {
     setActionOver(prev => !prev);
   };
-  const handleGalleryOver = () => {
-    setGalleryOver(prev => !prev);
+  const handleActionClick = () => {
+    setOpenAction(prev => !prev);
   };
   return (
     <ThemeProvider theme={theme}>
@@ -107,7 +158,14 @@ const NavBar = () => {
               <SmallIcon src="favicon.ico" />
             </Link>
             <Link href="http://www.bridgestoprosperity.org" underline="none">
-              <Typography variant="h3">Bridges to Prosperity</Typography>
+              <Typography
+                variant="h3"
+                style={{
+                  color: mouseOver ? 'white' : '#161345',
+                }}
+              >
+                Bridges to Prosperity
+              </Typography>
             </Link>
           </HomeDiv>
         </StyledDiv>
@@ -137,10 +195,24 @@ const NavBar = () => {
             <TestDivTwo></TestDivTwo>
           </Slide> */}
           <InfoLink onMouseEnter={handleInfoOver} onMouseLeave={handleInfoOver}>
+            onMouseEnter={handleInfoOver}
+            onMouseLeave={handleInfoOver}
+            onClick={handleLearnClick}>
             <Typography variant="h4" align="center">
               Learn
             </Typography>
           </InfoLink>
+          <Modal
+            open={openInfo}
+            onClose={handleLearnClick}
+            closeAfterTransition
+            BackdropComponent={Backdrop}
+            BackdropProps={{
+              timeout: 500,
+            }}
+          >
+            <LearnModal />
+          </Modal>
           <Slide in={partnerOver} direction="down">
             <TestDivTwo
               style={{
@@ -151,11 +223,23 @@ const NavBar = () => {
           <InfoLink
             onMouseEnter={handlePartnerOver}
             onMouseLeave={handlePartnerOver}
+            onClick={handlePartnerClick}
           >
             <Typography variant="h4" align="center">
               Partner
             </Typography>
           </InfoLink>
+          <Modal
+            open={openPartner}
+            onClose={handlePartnerClick}
+            closeAfterTransition
+            BackdropComponent={Backdrop}
+            BackdropProps={{
+              timeout: 500,
+            }}
+          >
+            <PartnerModal />
+          </Modal>
           <Slide in={actionOver} direction="down">
             <TestDivTwo
               style={{
@@ -166,17 +250,33 @@ const NavBar = () => {
           <InfoLink
             onMouseEnter={handleActionOver}
             onMouseLeave={handleActionOver}
+            onClick={handleActionClick}
           >
             <Typography variant="h4" align="center">
               Take Action
             </Typography>
           </InfoLink>
+          <Modal
+            open={openAction}
+            onClose={handleActionClick}
+            closeAfterTransition
+            BackdropComponent={Backdrop}
+            BackdropProps={{
+              timeout: 500,
+            }}
+          >
+            <ActionModal />
+          </Modal>
           <InfoLink
             style={{
               padding: '1%',
             }}
           >
-            <StyledButton variant="contained" color="primary">
+            <StyledButton
+              variant="contained"
+              color="primary"
+              href="https://www.bridgestoprosperity.org/donate/"
+            >
               Donate
             </StyledButton>
           </InfoLink>

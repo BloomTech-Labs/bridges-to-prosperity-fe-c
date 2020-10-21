@@ -27,7 +27,7 @@ export default function GalleryComp(props) {
   console.log(photos);
   return (
     <div>
-      <Gallery photos={photos} onClick={openLightbox} />
+      <Gallery photos={photos} targetRowHeight="50%" onClick={openLightbox} />
       {viewerIsOpen ? (
         <Modal
           open={viewerIsOpen}
