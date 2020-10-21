@@ -62,6 +62,7 @@ const StyledDiv = styled.div`
   flex-flow: column;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 `;
 
 const InfoBox = ({ selectedBridge }) => {

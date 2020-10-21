@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Card } from '@material-ui/core';
 import styled from 'styled-components';
-// import RenderGraphPage from './RenderGraphPage';
-
+import Gallery from '../Gallery/GalleryComp';
 import { GraphPage } from '../Graph';
+
 const StyledCard = styled(Card)`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 3%;
   align-items: center;
 `;
 
@@ -19,40 +20,36 @@ const ImageDiv = styled.div`
 `;
 
 const ImageBox = selectedBridge => {
-  const images = [];
+  //   console.log(selectedBridge.selectedBridge.properties.after_img, 'HERE');
 
-  return (
-    <StyledCard>
-      {selectedBridge.selectedBridge ? (
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            flexDirection: 'column',
-          }}
-        >
-          <ImageDiv>
-            {selectedBridge.selectedBridge.properties.after_img ? (
-              <img src={selectedBridge.selectedBridge.properties.after_img} />
-            ) : (
-              <div></div>
-            )}
-            {selectedBridge.selectedBridge.properties.before_img ? (
-              <img src={selectedBridge.selectedBridge.properties.before_img} />
-            ) : (
-              <div></div>
-            )}
-          </ImageDiv>
-          <div>
-            <GraphPage props={selectedBridge.selectedBridge.properties} />
-          </div>
-        </div>
-      ) : (
-        <div></div>
-      )}
-    </StyledCard>
-  );
+  // const props = selectedBridge.selectedBridge.properties;
+  // const beforeImg = selectedBridge.selectedBridge.properties.before_img;
+  // const afterImg = selectedBridge.selectedBridge.properties.after_img;
+  if (selectedBridge.selectedBridge) {
+    const images = [];
+    if (selectedBridge.selectedBridge.properties.before_img) {
+      images.push({
+        src: selectedBridge.selectedBridge.properties.before_img
+      });
+    }
+    if (selectedBridge.selectedBridge.properties.after_img) {
+      images.push({
+        src: selectedBridge.selectedBridge.properties.after_img
+      });
+    }
+
+    return (
+      <StyledCard>
+        <Gallery photos={images} />
+        {selectedBridge.selectedBridge ?
+          <GraphPage props={selectedBridge.selectedBridge.properties} />
+          : <div></div>
+        }
+      </StyledCard>
+    );
+  } else {
+    return <div></div>;
+  }
 };
 
 export default ImageBox;
