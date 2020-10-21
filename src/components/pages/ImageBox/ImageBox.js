@@ -37,7 +37,6 @@ const ImageBox = selectedBridge => {
       width: 7,
     });
   }
-  console.log(images.length);
 
   return (
     <StyledCard>
