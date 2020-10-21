@@ -1,51 +1,50 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Card } from '@material-ui/core';
 import styled from 'styled-components';
 import Gallery from '../Gallery/GalleryComp';
-import { GraphPage } from '../Graph';
+import NotFound from '../NotFound/stockphotos/no_img.jpg';
+// import RenderGraphPage from './RenderGraphPage';
 
+import { GraphPage } from '../Graph';
 const StyledCard = styled(Card)`
+  width: 90%;
+  /* height: 27.5vh; */
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 3%;
-  align-items: center;
-`;
 
-const ImageDiv = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin: 10% 0 0 10%;
 `;
 
 const ImageBox = selectedBridge => {
-//   console.log(selectedBridge.selectedBridge.properties.after_img, 'HERE');
+  console.log(selectedBridge.selectedBridge.properties.after_img, 'HERE');
 
   const props = selectedBridge.selectedBridge.properties;
   const beforeImg = selectedBridge.selectedBridge.properties.before_img;
   const afterImg = selectedBridge.selectedBridge.properties.after_img;
 
-  const images = [];
-  if (beforeImg) {
-    images.push({
-      src: beforeImg,
-      height: 4,
-      width: 7,
-    });
-  }
-  if (afterImg) {
-    images.push({
-      src: afterImg,
+  const images = [
+    {
+      src: beforeImg || NotFound,
+      // src: before,
 
-      height: 4,
-      width: 7,
-    });
-  }
+      width: 4,
+      height: 3,
+    },
+    {
+      src: afterImg || NotFound,
+
+      // src: () => (typeof afterImg === undefined ? NotFound : afterImg),
+
+      width: 4,
+      height: 3,
+    },
+  ];
 
   return (
     <StyledCard>
       <Gallery photos={images} />
+
       <GraphPage props={props} />
     </StyledCard>
   );
