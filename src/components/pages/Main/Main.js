@@ -7,7 +7,7 @@ import ImageBox from '../ImageBox/ImageBox';
 import { Card } from '@material-ui/core';
 import styled from 'styled-components';
 import NavBar from '../NavBar/NavBar';
-import Blue from './PatternMixed.svg';
+import Blue from './PatternBlue.svg';
 
 const StyledDiv = styled.div`
   display: flex;
@@ -23,16 +23,13 @@ const { Content } = Layout;
 
 const Main = () => {
   return (
-    <WholeDiv
-      style={{
-        backgroundImage: `url(${Blue})`,
-        backgroundPosition: 'center',
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat',
-      }}
-    >
+    <WholeDiv>
       <NavBar />
-      <StyledDiv>
+      <StyledDiv
+      // style={{
+      //   backgroundColor: '#D6D1CA',
+      // }}
+      >
         <Store>
           <Map />
         </Store>
