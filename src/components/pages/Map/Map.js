@@ -13,6 +13,7 @@ import { Drawer } from 'antd';
 import ImageBox from '../ImageBox/ImageBox';
 import InfoBox from '../InfoBox/InfoBox';
 import IconGroup from '../IconGroup/IconGroup';
+import AddLocation from '../AddLocation'
 import { Card } from '@material-ui/core';
 import styled from 'styled-components';
 // import bg from '../../../bg.png';
@@ -208,6 +209,9 @@ const Map = () => {
     <BigContainer>
       <InfoContainer>
         <ImageBox selectedBridge={selectedBridge} />
+        {/* insert the add location  */}
+        <AddLocation />
+
         <InfoBox selectedBridge={selectedBridge} />
       </InfoContainer>
       <MapContainer>
