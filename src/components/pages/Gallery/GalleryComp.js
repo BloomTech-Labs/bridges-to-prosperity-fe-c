@@ -14,11 +14,11 @@ export default function GalleryComp(props) {
     console.log(e.target);
     setViewerIsOpen(true);
   };
-  //   const openLightbox = useCallback((event, { photo, index }) => {
-  //     setCurrentImage(index);
-  //     console.log(index);
-  //     setViewerIsOpen(true);
-  //   }, []);
+  // const openLightbox = useCallback((event, { photo, index }) => {
+  //   setCurrentImage(index);
+  //   console.log(index);
+  //   setViewerIsOpen(true);
+  // }, []);
 
   const closeLightbox = () => {
     setCurrentImage(0);

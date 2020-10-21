@@ -71,6 +71,7 @@ const NavBar = () => {
   const [infoOver, setInfoOver] = useState(false);
   const [partnerOver, setPartnerOver] = useState(false);
   const [actionOver, setActionOver] = useState(false);
+  const [galleryOver, setGalleryOver] = useState(false);
   const handleChange = () => {
     //  To reduce the other functions, switch case detecting the id of the element being moused over.
     setMouseOver(prev => !prev);
@@ -83,6 +84,9 @@ const NavBar = () => {
   };
   const handleActionOver = () => {
     setActionOver(prev => !prev);
+  };
+  const handleGalleryOver = () => {
+    setGalleryOver(prev => !prev);
   };
   return (
     <ThemeProvider theme={theme}>
@@ -109,9 +113,29 @@ const NavBar = () => {
         </StyledDiv>
 
         <InfoDiv>
-          <Slide in={infoOver} direction="down">
+          {/* <Slide in={galleryOver} direction="down">
             <TestDivTwo></TestDivTwo>
           </Slide>
+          <InfoLink
+            onMouseEnter={handleGalleryOver}
+            onMouseLeave={handleGalleryOver}
+          >
+            <Typography variant="h4" align="center">
+              <Link href="/gallery" onClick="/gallery">
+                Gallery
+              </Link>
+            </Typography>
+          </InfoLink>
+          <Slide in={partnerOver} direction="down">
+            <TestDivTwo */}
+          {/* // style={{
+            //   marginRight: '25%',
+            // }} */}
+          {/* ></TestDivTwo>
+          </Slide>
+          <Slide in={infoOver} direction="down">
+            <TestDivTwo></TestDivTwo>
+          </Slide> */}
           <InfoLink onMouseEnter={handleInfoOver} onMouseLeave={handleInfoOver}>
             <Typography variant="h4" align="center">
               Learn
