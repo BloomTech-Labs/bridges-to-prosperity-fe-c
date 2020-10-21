@@ -13,7 +13,7 @@ import { ContactSupportOutlined } from '@material-ui/icons';
 
 const StyledTableCell = withStyles(theme => ({
   head: {
-    backgroundColor: theme.palette.common.black,
+    backgroundColor: theme.palette.primary.main,
     color: theme.palette.common.white,
   },
   body: {
@@ -83,7 +83,7 @@ const InfoBox = ({ selectedBridge }) => {
           <Table className={StyledTableRow.table} aria-label="customized table">
             <TableHead>
               <TableRow>
-                <StyledTableCell>Category</StyledTableCell>
+                <StyledTableCell>Bridge Information</StyledTableCell>
 
                 <StyledTableCell align="right"></StyledTableCell>
               </TableRow>
@@ -92,9 +92,11 @@ const InfoBox = ({ selectedBridge }) => {
               {rows.map(row => (
                 <StyledTableRow key={row.name}>
                   <StyledTableCell component="th" scope="row">
-                    {row.category}
+                    <Typography variant="body1">{row.category}</Typography>
                   </StyledTableCell>
-                  <StyledTableCell align="right">{row.data}</StyledTableCell>
+                  <StyledTableCell align="right">
+                    <Typography variant="body1">{row.data}</Typography>
+                  </StyledTableCell>
                 </StyledTableRow>
               ))}
             </TableBody>
