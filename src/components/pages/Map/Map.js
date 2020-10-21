@@ -13,7 +13,7 @@ import { Drawer } from 'antd';
 import ImageBox from '../ImageBox/ImageBox';
 import InfoBox from '../InfoBox/InfoBox';
 import IconGroup from '../IconGroup/IconGroup';
-import AddLocation from '../AddLocation'
+import AddLocation from '../AddLocation';
 import { Card } from '@material-ui/core';
 import styled from 'styled-components';
 // import bg from '../../../bg.png';
@@ -37,7 +37,7 @@ const InfoContainer = styled.div`
   width: 90%;
   display: flex;
   flex-flow: column;
-  
+
   @media (max-width: 1024px) {
     width: 90%;
     margin: 0;
@@ -195,16 +195,6 @@ const Map = () => {
     }
   }
 
-  // allows user to press "ESC" key to exit popup
-  // useEffect(() => {
-  //   const listener = e => {
-  //     if (e.key === 'Escape') {
-  //       setSelectedBridge(null);
-  //     }
-  //   };
-  //   window.addEventListener('keydown', listener);
-  // }, []);
-
   return (
     <BigContainer>
       <InfoContainer>
@@ -226,9 +216,6 @@ const Map = () => {
             //enable dragging
             onViewportChange={handleViewportChange}
           >
-            {/* <div className="sidebar">
-            <LeftSideBar />
-          </div> */}
             {/* Maps through all the data in bridges.json grabbing lat and lon to display markers */}
             {bridge.features.map(bridge => (
               <Marker
@@ -262,9 +249,6 @@ const Map = () => {
               </Marker>
             ))}
 
-            {/* <div className="footerHolder">
-              <Footer />
-            </div> */}
             {/* controls for zooming in and out*/}
             <div className="zoom-controls">
               <NavigationControl
@@ -291,29 +275,6 @@ const Map = () => {
                 </div>
               )}
             </div>
-
-            {/* <Drawer
-            className="infoDrawer"
-            title={<h2>Bridge Info</h2>}
-            drawerStyle={{ backgroundColor: 'white' }}
-            placement="right"
-            closable={true}
-            onClose={onClose}
-            visible={visible}
-            mask={false}
-            maskClosable={true}
-            overflow={false}
-          >
-            <h3>Bridge Name: {state.bridge.properties.bridge_name}</h3>
-            <h3>Province: {state.bridge.properties.province_name}</h3>
-            <h3>District: {state.bridge.properties.district_name}</h3>
-            <h3>Project Stage: {state.bridge.properties.project_stage}</h3>
-            <h3>Project Code: {state.bridge.properties.project_code}</h3>
-            <h3>Bridge Type: {state.bridge.properties.bridge_type}</h3>
-            <h3>
-              Individuals Served: {state.bridge.properties.individuals_served}
-            </h3>
-          </Drawer> */}
           </ReactMapGL>
         </Card>
       </MapContainer>

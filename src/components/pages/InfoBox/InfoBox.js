@@ -67,11 +67,6 @@ const StyledDiv = styled.div`
 const InfoBox = ({ selectedBridge }) => {
   console.log(selectedBridge, 'selected bridge');
   let rows = [];
-  // selectedBridge
-  //   ? selectedBridge.selectedBridge.properties.keys().forEach(category => {
-  //       rows.push({ [category]: selectedBridge.properties[category] });
-  //     })
-  //   : console.log(selectedBridge);
   if (selectedBridge) {
     rows = createData(selectedBridge);
     console.log(selectedBridge, rows);
