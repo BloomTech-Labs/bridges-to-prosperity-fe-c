@@ -1,10 +1,10 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { ContextStatus, ContextOpen } from '../Store';
-import { Card, Modal, Backdrop } from '@material-ui/core';
+import { Paper, Modal, Backdrop } from '@material-ui/core';
 import Search from '../Search/Search';
 import styled from 'styled-components';
 
-const StyledCard = styled(Card)`
+const StyledCard = styled(Paper)`
   margin: 0 30% 10px;
   height: 10vh;
   display: flex;
@@ -63,7 +63,7 @@ const IconGroup = () => {
       >
         <Search />
       </Modal>
-      <StyledCard>
+      <StyledCard elevation={0}>
         {/* Change Search Bar into a button that pops out a modal for search */}
         {/* <Search /> */}
 
@@ -78,8 +78,8 @@ const IconGroup = () => {
                     handleOpen();
                   }}
                 />
-              Search
-            </div>
+                Search
+              </div>
               <div className="icons" value={'Complete'}>
                 <img
                   src="bridge-icon.png"
@@ -88,8 +88,8 @@ const IconGroup = () => {
                     setStatus('Complete');
                   }}
                 />
-              Completed
-            </div>
+                Completed
+              </div>
               <div className="icons">
                 <img
                   src="construction-icon.png"
@@ -98,8 +98,8 @@ const IconGroup = () => {
                     setStatus('Under Construction');
                   }}
                 />
-              Under Construction
-            </div>
+                Under Construction
+              </div>
               <div className="icons">
                 <img
                   src="checked-icon.png"
@@ -108,8 +108,8 @@ const IconGroup = () => {
                     setStatus('Confirmed');
                   }}
                 />
-              Confirmed
-            </div>
+                Confirmed
+              </div>
             </div>
           </div>
           <div>
@@ -122,8 +122,8 @@ const IconGroup = () => {
                     setStatus('Prospecting');
                   }}
                 />
-              Prospecting
-            </div>
+                Prospecting
+              </div>
               <div className="icons">
                 <img
                   src="detective-icon.png"
@@ -132,8 +132,8 @@ const IconGroup = () => {
                     setStatus('Identified');
                   }}
                 />
-              Identified
-            </div>
+                Identified
+              </div>
               <div className="icons">
                 <img
                   src="rejected-icon.png"
@@ -142,8 +142,8 @@ const IconGroup = () => {
                     setStatus('Rejected');
                   }}
                 />
-              Rejected
-            </div>
+                Rejected
+              </div>
             </div>
           </div>
         </IconDiv>
