@@ -37,9 +37,10 @@ const RenderGraphPage = props => {
   const layout = {
     width: 490,
     height: 320,
-    title: `Bridge Name: ${bridgeData.bridge_name} `,
+    title:`Bridge Name: ${bridgeData.bridge_site_name} `,
     font: { size: 13 },
-    showlegend: true,
+    showlegend:true,
+    position: 'center'
   };
 
   const [showProgress, setProgress] = useState(false);

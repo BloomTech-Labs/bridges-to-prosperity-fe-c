@@ -5,29 +5,45 @@ import styled from 'styled-components';
 
 import { GraphPage } from '../Graph';
 const StyledCard = styled(Card)`
-  width: 90%;
-  /* height: 27.5vh; */
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+`;
 
-  margin: 10% 0 0 10%;
+const ImageDiv = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const ImageBox = selectedBridge => {
-  console.log(selectedBridge.selectedBridge.properties.after_img, 'HERE');
-
-  const props = selectedBridge.selectedBridge.properties;
   const images = [];
 
   return (
     <StyledCard>
-      <img
-        src={selectedBridge.selectedBridge.properties.after_img}
-        style={{ width: 400, height: 200, position: 'center' }}
-      />
-      <img src={selectedBridge.selectedBridge.properties.before_img} />
-      <GraphPage props={props} />
+      {selectedBridge.selectedBridge ? (
+        <div>
+          <ImageDiv>
+            {selectedBridge.selectedBridge.properties.after_img ?
+              <img
+                src={selectedBridge.selectedBridge.properties.after_img}
+              />
+              : <div></div>
+            }
+            {selectedBridge.selectedBridge.properties.before_img ?
+              <img
+                src={selectedBridge.selectedBridge.properties.before_img}
+              />
+              : <div></div>
+            }
+          </ImageDiv>
+          <GraphPage props={selectedBridge.selectedBridge.properties} />
+        </div>
+      ) :
+        <div></div>
+      }
     </StyledCard>
   );
 };
