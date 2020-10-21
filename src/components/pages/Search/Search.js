@@ -18,6 +18,15 @@ const StyledCard = styled(Card)`
   justify-content: center;
   align-items: center;
   margin: 5% 42.5%;
+
+  @media (max-width: 1024px) {
+    width: 30%;
+    margin: 5% 35%;
+  }
+  @media (max-width: 600px) {
+    width: 45%;
+    margin: 5% 27.5%
+  }
 `;
 
 const Search = () => {
@@ -32,7 +41,7 @@ const Search = () => {
   const dataList = searchData;
 
   //List everything to exclude with filtering
-  const exclude = ['id'];
+  const exclude = ['after_img', 'before_img', 'prov_id', 'district_id', 'sector_id', 'cell_id', 'original_community_col', 'indviduals_directly_served', 'asssessment-date'];
 
   //filter function for filtering search data out of dataList
   const filterData = value => {
@@ -40,14 +49,16 @@ const Search = () => {
     if (lowercasedValue === '') setFilterDataList([]);
     else {
       const filteredData = dataList.filter(item => {
-        return Object.keys(item).some(key =>
-          exclude.includes(key)
+        // console.log(dataList, item, 'DATA ITEM');
+        return Object.keys(item).some(key => {
+          // console.log(key, 'KEY');
+          return exclude.includes(key)
             ? false
             : item[key]
                 .toString()
                 .toLowerCase()
-                .includes(lowercasedValue)
-        );
+                .includes(lowercasedValue);
+        });
       });
       setFilterDataList(filteredData);
     }
@@ -70,9 +81,9 @@ const Search = () => {
     };
     setViewport(flyViewport);
     setOpen(false);
-    console.log(viewport);
-    console.log(flyViewport);
-    console.log([lat, long]);
+    // console.log(viewport);
+    // console.log(flyViewport);
+    // console.log([lat, long]);
   };
 
   const setCoord = (lat, long) => {
@@ -109,7 +120,7 @@ const Search = () => {
               }}
             >
               <b>Bridge Name: </b>
-              {d.bridge_name}
+              {d.bridge_site_name}
               <br />
               <b>Project Code: </b>
               {d.project_code}

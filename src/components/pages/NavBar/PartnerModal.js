@@ -12,6 +12,16 @@ const PartnerCard = styled(Card)`
   align-items: center;
   margin: 10% 40%;
   padding: 2%;
+
+  @media (max-width: 1024px) {
+    width: 40%;
+    margin: 10% 30%;
+  }
+
+  @media (max-width: 600px) {
+    width: 60%;
+    margin: 20%;
+  }
 `;
 
 const PartnerModal = () => {

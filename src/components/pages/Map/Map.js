@@ -15,8 +15,8 @@ import InfoBox from '../InfoBox/InfoBox';
 import IconGroup from '../IconGroup/IconGroup';
 import { Card } from '@material-ui/core';
 import styled from 'styled-components';
-import bg from '../../../bg.png';
-import bg3 from '../../../bg3.png';
+// import bg from '../../../bg.png';
+// import bg3 from '../../../bg3.png';
 
 import {
   Context,
@@ -33,52 +33,48 @@ import LeftSideBar from '../LeftSideBar/LeftSideBar';
 import Footer from '../Footer/Footer';
 
 const InfoContainer = styled.div`
-  width: 35%;
-  margin-left: 5%;
-  padding: 1% 5% 1% 0;
+  width: 90%;
   display: flex;
   flex-flow: column;
-  justify-content: center;
-  align-items: center;
-  background-image: url(${bg});
+  
+  @media (max-width: 1024px) {
+    width: 90%;
+    margin: 0;
+    padding: 0;
+  }
+
+  @media (max-width: 600px) {
+    width: 90%;
+  }
 `;
 
 const MapContainer = styled.div`
-  width: 50%;
-  margin: 0 5% 0 5%;
+  width: 90%;
+  margin: 0;
   padding: 1%;
   display: flex;
   flex-flow: column;
-  justify-content: space-between;
-  align-items: space-between;
-  background-image: url(${bg3});
+
+  @media (max-width: 1024px) {
+    width: 90%;
+  }
+  @media (max-width: 600px) {
+    width: 90%;
+  }
 `;
 
 const BigContainer = styled.div`
   width: 100%;
   display: flex;
-  justify-content: space-around;
-`;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
 
-let test = {
-  geometry: {
-    type: 'Point',
-    coordinates: [-2.2280555, 29.573334],
-  },
-  properties: {
-    bridge_image: 'Waiting on Data',
-    bridge_name: 'Serugeme',
-    bridge_type: 'Suspended',
-    district_id: 26,
-    district_name: 'Ruhango',
-    id: 1042,
-    individuals_served: 4111,
-    project_code: 1012480,
-    project_stage: 'Complete',
-    province_id: 2,
-    province_name: 'Southern Province',
-  },
-};
+  @media (max-width: 1024px) {
+    flex-direction: column-reverse;
+    justify-content: start;
+  }
+`;
 
 const Map = () => {
   const mapRef = useRef();
@@ -113,7 +109,7 @@ const Map = () => {
   const [searchData, setSearchData] = useContext(ContextSearchData);
 
   //state of currently clicked on bridge marker
-  const [selectedBridge, setSelectedBridge] = useState(test);
+  const [selectedBridge, setSelectedBridge] = useState(null);
 
   //state of selected bridge passed to Sidebar
   const [state, setState] = useContext(Context);
@@ -136,7 +132,7 @@ const Map = () => {
   //hits endpoint and gets all bridges
   useEffect(() => {
     axios
-      .get('https://b2ptc.herokuapp.com/bridges')
+      .get('https://labs27-c-bridges-api.herokuapp.com/bridges')
       .then(response => {
         response.data.map(element => {
           //pushes every element to array variable
@@ -175,17 +171,24 @@ const Map = () => {
           coordinates: [data[i].latitude, data[i].longitude],
         },
         properties: {
-          id: data[i].id,
           project_code: data[i].project_code,
-          bridge_name: data[i].bridge_name,
+          bridge_site_name: data[i].bridge_site_name,
           bridge_type: data[i].bridge_type,
           district_id: data[i].district_id,
-          district_name: data[i].district_name,
-          province_id: data[i].province_id,
-          province_name: data[i].province_name,
+          district: data[i].district,
+          province: data[i].province,
           project_stage: data[i].project_stage,
-          individuals_served: data[i].individuals_served,
-          bridge_image: data[i].bridge_image,
+          latitude: data[i].latitude,
+          longitude: data[i].longitude,
+          individuals_directly_served: data[i].individuals_directly_served,
+          assessment_date: data[i].assessment_date,
+          sector: data[i].sector,
+          cell: data[i].cell,
+          original_community_col: data[i].original_community_col,
+          prov_id: data[i].prov_id,
+          district_id: data[i].district_id,
+          cell_id: data[i].cell_id,
+          after_img: data[i].after_img,
         },
       });
     }
@@ -204,11 +207,11 @@ const Map = () => {
   return (
     <BigContainer>
       <InfoContainer>
-        <IconGroup />
         <ImageBox selectedBridge={selectedBridge} />
         <InfoBox selectedBridge={selectedBridge} />
       </InfoContainer>
       <MapContainer>
+        <IconGroup />
         <Card>
           <ReactMapGL
             ref={mapRef}
@@ -233,7 +236,7 @@ const Map = () => {
                 <Tooltip
                   title={
                     <h2 style={{ color: 'white', margin: 'auto' }}>
-                      {bridge.properties.bridge_name}
+                      {bridge.properties.bridge_site_name}
                     </h2>
                   }
                   arrow

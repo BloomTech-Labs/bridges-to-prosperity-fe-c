@@ -17,9 +17,15 @@ import ActionModal from './ActionModal';
 
 const StyledDiv = styled.div`
   display: flex;
-  margin-bottom: 25px;
   position: relative;
   justify-content: space-between;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
 `;
 
 const HomeDiv = styled.div`
@@ -32,6 +38,10 @@ const TestDiv = styled.div`
   background-color: #66c3e3;
   width: 100%;
   height: 10vh;
+
+  @media (max-width: 600px) {
+    height: 50vh;
+  }
 `;
 
 const TestDivTwo = styled.div`
@@ -40,12 +50,26 @@ const TestDivTwo = styled.div`
   width: 25%;
   height: 10vh;
   border-radius: 20px;
+
+  @media (max-width: 600px) {
+    visibility: hidden;
+  }
 `;
 
 const InfoDiv = styled.div`
   display: flex;
   width: 40%;
   position: relative;
+
+  @media (max-width: 1024px) {
+    width: 60%;
+  }
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 const SmallIcon = styled.img`
@@ -59,6 +83,13 @@ const InfoLink = styled(Link)`
   width: 25%;
   height: 10vh;
   padding: 3.5% 0;
+  
+  @media (max-width: 600px) {
+    padding: 0;
+    margin: 0;
+    width: 50%;
+    height: auto;
+  }
 `;
 
 const StyledButton = styled(Button)`

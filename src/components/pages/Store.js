@@ -8,8 +8,8 @@ const initialState = {
       project_code: null,
       bridge_type: null,
       project_stage: null,
-      bridge_name: '',
-      district_name: '',
+      bridge_site_name: '',
+      district: '',
     },
   },
 };
