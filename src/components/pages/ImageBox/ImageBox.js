@@ -20,35 +20,36 @@ const ImageDiv = styled.div`
 `;
 
 const ImageBox = selectedBridge => {
-//   console.log(selectedBridge.selectedBridge.properties.after_img, 'HERE');
+  //   console.log(selectedBridge.selectedBridge.properties.after_img, 'HERE');
 
-  const props = selectedBridge.selectedBridge.properties;
-  const beforeImg = selectedBridge.selectedBridge.properties.before_img;
-  const afterImg = selectedBridge.selectedBridge.properties.after_img;
+  // const props = selectedBridge.selectedBridge.properties;
+  // const beforeImg = selectedBridge.selectedBridge.properties.before_img;
+  // const afterImg = selectedBridge.selectedBridge.properties.after_img;
+  if (selectedBridge.selectedBridge) {
+    const images = [];
+    if (selectedBridge.selectedBridge.properties.before_img) {
+      images.push({
+        src: selectedBridge.selectedBridge.properties.before_img
+      });
+    }
+    if (selectedBridge.selectedBridge.properties.after_img) {
+      images.push({
+        src: selectedBridge.selectedBridge.properties.after_img
+      });
+    }
 
-  const images = [];
-  if (beforeImg) {
-    images.push({
-      src: beforeImg,
-      height: 4,
-      width: 7,
-    });
+    return (
+      <StyledCard>
+        <Gallery photos={images} />
+        {selectedBridge.selectedBridge ?
+          <GraphPage props={selectedBridge.selectedBridge.properties} />
+          : <div></div>
+        }
+      </StyledCard>
+    );
+  } else {
+    return <div></div>;
   }
-  if (afterImg) {
-    images.push({
-      src: afterImg,
-
-      height: 4,
-      width: 7,
-    });
-  }
-
-  return (
-    <StyledCard>
-      <Gallery photos={images} />
-      <GraphPage props={props} />
-    </StyledCard>
-  );
 };
 
 export default ImageBox;
