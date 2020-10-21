@@ -1,91 +1,77 @@
-import React,{useEffect,useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import Plot from 'react-plotly.js';
-import { gsap } from 'gsap'
+import { gsap } from 'gsap';
 import { CircularProgress } from '@material-ui/core';
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-
-const RenderGraphPage = (props) => {
-
+const RenderGraphPage = props => {
   const Progress = styled.div`
-    width:33.3%;
+    width: 33.3%;
     margin: 0 auto;
-    padding:2%;
-
-  
-  `
+    padding: 2%;
+  `;
 
   const prop = { ...props };
   const bridgeData = prop.props.props;
   console.log(bridgeData);
 
   const trace1 = {
-    y: [5500, 200, 3302,],
-    x: ['Total Population', 'Total Served', 'Growth',],
+    y: [5500, 200, 3302],
+    x: ['Total Population', 'Total Served', 'Growth'],
     type: 'bar',
-    name: 'Social Effect'
+    name: 'Social Effect',
   };
   const trace2 = {
-    y: [500, 3300, 302,],
-    x: ['Total Population', 'Total Served', 'Growth',],
+    y: [500, 3300, 302],
+    x: ['Total Population', 'Total Served', 'Growth'],
     type: 'bar',
-    name: 'Economic Effect'
+    name: 'Economic Effect',
   };
   const trace3 = {
-    y: [5200, 3320, 3602,],
-    x: ['Total Population', 'Total Served', 'Growth',],
+    y: [5200, 3320, 3602],
+    x: ['Total Population', 'Total Served', 'Growth'],
     type: 'bar',
-    name: 'Economic Effect'
+    name: 'Economic Effect',
   };
-  const data = [trace1,trace2,trace3]
+  const data = [trace1, trace2, trace3];
   const layout = {
-    width:490,
+    width: 490,
     height: 320,
-    title:`Bridge Name: ${bridgeData.bridge_name} `,
+    title:`Bridge Name: ${bridgeData.bridge_site_name} `,
     font: { size: 13 },
-    showlegend:true
+    showlegend:true,
+    position: 'center'
   };
 
-  const [showProgress,setProgress] = useState(false)
+  const [showProgress, setProgress] = useState(false);
 
-
- 
-   useEffect(() => {
+  useEffect(() => {
     setProgress(true);
-     setTimeout(() => {
-       gsap.to('.progress', .7, { opacity: 0 });
-       setProgress(false)
-       gsap.from('.graph',1, { opacity: 0 ,ease:'power2'},'-=1');
-      
-
-     }, 550);
-      
+    setTimeout(() => {
+      gsap.to('.progress', 0.7, { opacity: 0 });
+      setProgress(false);
+      gsap.from('.graph', 1, { opacity: 0, ease: 'power2' }, '-=1');
+    }, 550);
   }, [bridgeData]);
 
   return (
     <div>
-      {
-      !showProgress?
-        <Plot className='graph'  data={data} layout={layout} config={{
-        displayModeBar: false,
-        responsive: true,
-        fillFrame: true,
-
-          }} />
-        
-          :
-          <Progress className='progress'>
-      <CircularProgress color='secondary'/>
-
-
-          </Progress>
-    
-    }
-
-
+      {!showProgress ? (
+        <Plot
+          className="graph"
+          data={data}
+          layout={layout}
+          config={{
+            displayModeBar: false,
+            responsive: true,
+          }}
+        />
+      ) : (
+        <Progress className="progress">
+          <CircularProgress color="secondary" />
+        </Progress>
+      )}
     </div>
-    
-    
   );
 };
 

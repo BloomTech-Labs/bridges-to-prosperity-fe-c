@@ -5,22 +5,27 @@ import Gallery from '../Gallery/GalleryComp';
 import { GraphPage } from '../Graph';
 
 const StyledCard = styled(Card)`
-  width: 90%;
-  /* height: 27.5vh; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 3%;
+  align-items: center;
+`;
 
-  margin: 10% 0 0 10%;
+const ImageDiv = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const ImageBox = selectedBridge => {
-  console.log(selectedBridge.selectedBridge.properties.after_img, 'HERE');
+//   console.log(selectedBridge.selectedBridge.properties.after_img, 'HERE');
 
   const props = selectedBridge.selectedBridge.properties;
   const beforeImg = selectedBridge.selectedBridge.properties.before_img;
   const afterImg = selectedBridge.selectedBridge.properties.after_img;
+
   const images = [];
   if (beforeImg) {
     images.push({

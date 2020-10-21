@@ -1,84 +1,109 @@
 import React from 'react';
 import { Card, Typography } from '@material-ui/core';
-import theme from '../../../styles/theme-overrides.js';
 import styled from 'styled-components';
+import { withStyles, makeStyles } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+import { ContactSupportOutlined } from '@material-ui/icons';
+
+const StyledTableCell = withStyles(theme => ({
+  head: {
+    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.common.white,
+  },
+  body: {
+    fontSize: 14,
+  },
+}))(TableCell);
+
+const StyledTableRow = withStyles(theme => ({
+  root: {
+    '&:nth-of-type(odd)': {
+      backgroundColor: theme.palette.action.hover,
+    },
+  },
+}))(TableRow);
+
+function createData({ properties }) {
+  return [
+    { category: 'Project Code', data: properties.project_code },
+    { category: 'Bridge Name', data: properties.bridge_site_name },
+    { category: 'Bridge Type', data: properties.bridge_type },
+    { category: 'District', data: properties.district },
+    { category: 'Province', data: properties.province },
+    { category: 'Project Stage', data: properties.project_stage },
+    { category: 'Latitude', data: properties.latitude },
+    { category: 'Longitude', data: properties.longitude },
+    {
+      category: 'Individuals Directly Served',
+      data: properties.individuals_directly_served,
+    },
+    { category: 'Assessment Date', data: properties.assessment_date },
+    { category: 'Sector', data: properties.sector },
+    { category: 'Cell', data: properties.cell },
+  ];
+}
 
 const StyledCard = styled(Card)`
   width: 100%;
-  height: 27.5vh;
   display: flex;
-  margin: 10% 0 0 10%;
+  margin: 1%;
+  justify-content: center;
+  align-items: center;
 `;
 
 const StyledDiv = styled.div`
   display: flex;
   flex-flow: column;
-  padding: 10px;
+  justify-content: center;
+  align-items: center;
 `;
 
-const InfoBox = selectedBridge => {
+const InfoBox = ({ selectedBridge }) => {
+  console.log(selectedBridge, 'selected bridge');
+  let rows = [];
+  // selectedBridge
+  //   ? selectedBridge.selectedBridge.properties.keys().forEach(category => {
+  //       rows.push({ [category]: selectedBridge.properties[category] });
+  //     })
+  //   : console.log(selectedBridge);
+  if (selectedBridge) {
+    rows = createData(selectedBridge);
+    console.log(selectedBridge, rows);
+  }
   return (
     <StyledCard>
-      {selectedBridge.selectedBridge ? (
-        <StyledDiv>
-          <Typography variant="h4">
-            Bridge Name:{' '}
-            {selectedBridge.selectedBridge.properties.bridge_site_name}
-          </Typography>
-          <Typography variant="h4">
-            Province: {selectedBridge.selectedBridge.properties.province}
-          </Typography>
-          <Typography variant="h4">
-            District: {selectedBridge.selectedBridge.properties.district}
-          </Typography>
-          <Typography variant="h4">
-            Project Stage:{' '}
-            {selectedBridge.selectedBridge.properties.project_stage}
-          </Typography>
-          <Typography variant="h4">
-            Bridge Type: {selectedBridge.selectedBridge.properties.bridge_type}
-          </Typography>
-          <Typography variant="h4">
-            Project Code:{' '}
-            {selectedBridge.selectedBridge.properties.project_code}
-          </Typography>
-          Sector: {selectedBridge.selectedBridge.properties.sector}
-          <Typography variant="h4">
-            Individuals Served:{' '}
-            {
-              selectedBridge.selectedBridge.properties
-                .individuals_directly_served
-            }
-          </Typography>
-          <Typography variant="h4">
-            Communities Served:{' '}
-            {selectedBridge.selectedBridge.properties.original_community_col}
-          </Typography>
-          <Typography variant="h4">
-            Date Assessed:{' '}
-            {selectedBridge.selectedBridge.properties.assessment_date}
-          </Typography>
-          <Typography variant="h4">
-            Cell: {selectedBridge.selectedBridge.properties.cell}
-          </Typography>
-          <Typography variant="h4">
-            Provence ID: {selectedBridge.selectedBridge.prov_id}
-          </Typography>
-          <Typography variant="h4">
-            District ID: {selectedBridge.selectedBridge.district_id}
-          </Typography>
-          <Typography variant="h4">
-            Cell ID: {selectedBridge.selectedBridge.cell_id}
-          </Typography>
-          <Typography variant="h4">
-            Longitude: {selectedBridge.selectedBridge.longitude}
-          </Typography>
-          <Typography variant="h4">
-            Latitude: {selectedBridge.selectedBridge.latitude}
-          </Typography>
-        </StyledDiv>
+      {selectedBridge ? (
+        <TableContainer component={StyledDiv}>
+          <Table className={StyledTableRow.table} aria-label="customized table">
+            <TableHead>
+              <TableRow>
+                <StyledTableCell>Bridge Information</StyledTableCell>
+
+                <StyledTableCell align="right"></StyledTableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {rows.map(row => (
+                <StyledTableRow key={row.name}>
+                  <StyledTableCell component="th" scope="row">
+                    <Typography variant="body1">{row.category}</Typography>
+                  </StyledTableCell>
+                  <StyledTableCell align="right">
+                    <Typography variant="body1">{row.data}</Typography>
+                  </StyledTableCell>
+                </StyledTableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
       ) : (
-        <StyledDiv>no selected bridge</StyledDiv>
+        <div></div>
       )}
     </StyledCard>
   );

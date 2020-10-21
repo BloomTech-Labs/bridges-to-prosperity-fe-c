@@ -13,8 +13,11 @@ import { Drawer } from 'antd';
 import ImageBox from '../ImageBox/ImageBox';
 import InfoBox from '../InfoBox/InfoBox';
 import IconGroup from '../IconGroup/IconGroup';
+import AddLocation from '../AddLocation'
 import { Card } from '@material-ui/core';
 import styled from 'styled-components';
+// import bg from '../../../bg.png';
+// import bg3 from '../../../bg3.png';
 
 import {
   Context,
@@ -31,48 +34,48 @@ import LeftSideBar from '../LeftSideBar/LeftSideBar';
 import Footer from '../Footer/Footer';
 
 const InfoContainer = styled.div`
-  width: 35%;
-  margin-left: 5%;
+  width: 90%;
   display: flex;
   flex-flow: column;
-  justify-content: center;
-  align-items: center;
+  
+  @media (max-width: 1024px) {
+    width: 90%;
+    margin: 0;
+    padding: 0;
+  }
+
+  @media (max-width: 600px) {
+    width: 90%;
+  }
 `;
 
 const MapContainer = styled.div`
-  width: 50%;
-  margin: 0 5% 0 5%;
+  width: 90%;
+  margin: 0;
+  padding: 1%;
   display: flex;
   flex-flow: column;
-  justify-content: space-between;
-  align-items: space-between;
+
+  @media (max-width: 1024px) {
+    width: 90%;
+  }
+  @media (max-width: 600px) {
+    width: 90%;
+  }
 `;
 
 const BigContainer = styled.div`
   width: 100%;
   display: flex;
-  justify-content: space-around;
-`;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
 
-let test = {
-  geometry: {
-    type: 'Point',
-    coordinates: [-2.2280555, 29.573334],
-  },
-  properties: {
-    bridge_image: 'Waiting on Data',
-    bridge_name: 'Serugeme',
-    bridge_type: 'Suspended',
-    district_id: 26,
-    district_name: 'Ruhango',
-    id: 1042,
-    individuals_served: 4111,
-    project_code: 1012480,
-    project_stage: 'Complete',
-    province_id: 2,
-    province_name: 'Southern Province',
-  },
-};
+  @media (max-width: 1024px) {
+    flex-direction: column-reverse;
+    justify-content: start;
+  }
+`;
 
 const Map = () => {
   const mapRef = useRef();
@@ -107,7 +110,7 @@ const Map = () => {
   const [searchData, setSearchData] = useContext(ContextSearchData);
 
   //state of currently clicked on bridge marker
-  const [selectedBridge, setSelectedBridge] = useState(test);
+  const [selectedBridge, setSelectedBridge] = useState(null);
 
   //state of selected bridge passed to Sidebar
   const [state, setState] = useContext(Context);
@@ -169,17 +172,13 @@ const Map = () => {
           coordinates: [data[i].latitude, data[i].longitude],
         },
         properties: {
-          id: data[i].id,
           project_code: data[i].project_code,
           bridge_site_name: data[i].bridge_site_name,
           bridge_type: data[i].bridge_type,
           district_id: data[i].district_id,
           district: data[i].district,
-          province_id: data[i].province_id,
           province: data[i].province,
           project_stage: data[i].project_stage,
-          individuals_served: data[i].individuals_served,
-          bridge_image: data[i].bridge_image,
           latitude: data[i].latitude,
           longitude: data[i].longitude,
           individuals_directly_served: data[i].individuals_directly_served,
@@ -197,23 +196,26 @@ const Map = () => {
   }
 
   // allows user to press "ESC" key to exit popup
-  useEffect(() => {
-    const listener = e => {
-      if (e.key === 'Escape') {
-        setSelectedBridge(null);
-      }
-    };
-    window.addEventListener('keydown', listener);
-  }, []);
+  // useEffect(() => {
+  //   const listener = e => {
+  //     if (e.key === 'Escape') {
+  //       setSelectedBridge(null);
+  //     }
+  //   };
+  //   window.addEventListener('keydown', listener);
+  // }, []);
 
   return (
     <BigContainer>
       <InfoContainer>
-        <IconGroup />
         <ImageBox selectedBridge={selectedBridge} />
+        {/* insert the add location  */}
+        <AddLocation />
+
         <InfoBox selectedBridge={selectedBridge} />
       </InfoContainer>
       <MapContainer>
+        <IconGroup />
         <Card>
           <ReactMapGL
             ref={mapRef}
@@ -238,7 +240,7 @@ const Map = () => {
                 <Tooltip
                   title={
                     <h2 style={{ color: 'white', margin: 'auto' }}>
-                      {bridge.properties.bridge_name}
+                      {bridge.properties.bridge_site_name}
                     </h2>
                   }
                   arrow
