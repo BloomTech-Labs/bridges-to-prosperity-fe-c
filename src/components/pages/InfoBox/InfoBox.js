@@ -52,7 +52,7 @@ function createData({ properties }) {
 const StyledCard = styled(Card)`
   width: 100%;
   display: flex;
-  margin: 1% 0 0 0;
+  margin: 1%;
   justify-content: center;
   align-items: center;
 `;
