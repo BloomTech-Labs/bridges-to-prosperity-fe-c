@@ -35,12 +35,12 @@ const RenderGraphPage = props => {
   };
   const data = [trace1, trace2, trace3];
   const layout = {
-    width: 490,
-    height: 320,
-    title:`Bridge Name: ${bridgeData.bridge_site_name} `,
+    width: '100%',
+    height: '100%',
+    title: `Bridge Name: ${bridgeData.bridge_site_name} `,
     font: { size: 13 },
-    showlegend:true,
-    position: 'center'
+    showlegend: true,
+    position: 'center',
   };
 
   const [showProgress, setProgress] = useState(false);

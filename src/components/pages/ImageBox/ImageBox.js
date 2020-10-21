@@ -24,26 +24,33 @@ const ImageBox = selectedBridge => {
   return (
     <StyledCard>
       {selectedBridge.selectedBridge ? (
-        <div>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            flexDirection: 'column',
+          }}
+        >
           <ImageDiv>
-            {selectedBridge.selectedBridge.properties.after_img ?
-              <img
-                src={selectedBridge.selectedBridge.properties.after_img}
-              />
-              : <div></div>
-            }
-            {selectedBridge.selectedBridge.properties.before_img ?
-              <img
-                src={selectedBridge.selectedBridge.properties.before_img}
-              />
-              : <div></div>
-            }
+            {selectedBridge.selectedBridge.properties.after_img ? (
+              <img src={selectedBridge.selectedBridge.properties.after_img} />
+            ) : (
+              <div></div>
+            )}
+            {selectedBridge.selectedBridge.properties.before_img ? (
+              <img src={selectedBridge.selectedBridge.properties.before_img} />
+            ) : (
+              <div></div>
+            )}
           </ImageDiv>
-          <GraphPage props={selectedBridge.selectedBridge.properties} />
+          <div>
+            <GraphPage props={selectedBridge.selectedBridge.properties} />
+          </div>
         </div>
-      ) :
+      ) : (
         <div></div>
-      }
+      )}
     </StyledCard>
   );
 };
