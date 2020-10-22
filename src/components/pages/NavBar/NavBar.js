@@ -294,3 +294,35 @@ const NavBar = () => {
 };
 
 export default NavBar;
+
+// ****The information below is for building out a button to the /gallery route. It is functional, but clashed with the current styling****
+
+{
+  /* <Slide in={galleryOver} direction="down">
+            <TestDivTwo></TestDivTwo>
+          </Slide>
+          <InfoLink
+            onMouseEnter={handleGalleryOver}
+            onMouseLeave={handleGalleryOver}
+          >
+            <Typography variant="h4" align="center">
+              <Link href="/gallery" onClick="/gallery">
+                Gallery
+              </Link>
+            </Typography>
+          </InfoLink>
+          <Slide in={partnerOver} direction="down">
+            <TestDivTwo */
+}
+{
+  /* // style={{
+            //   marginRight: '25%',
+            // }} */
+}
+{
+  /* ></TestDivTwo>
+          </Slide>
+          <Slide in={infoOver} direction="down">
+            <TestDivTwo></TestDivTwo>
+          </Slide> */
+}
