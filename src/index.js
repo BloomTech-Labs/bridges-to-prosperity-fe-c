@@ -18,6 +18,7 @@ import { ProfileListPage } from './components/pages/ProfileList';
 import { LoginPage } from './components/pages/Login';
 import { HomePage } from './components/pages/Home';
 import { ExampleDataViz } from './components/pages/ExampleDataViz';
+import AddLocation from './components/pages/AddLocation';
 import { config } from './utils/oktaConfig';
 import { LoadingComponent } from './components/common';
 import { GraphPage } from './components/pages/Graph';
@@ -51,6 +52,7 @@ function App() {
         <Route path="/main" component={Main} />
         <Route path="/graph" component={GraphPage} />
         <Route path="/login" component={LoginPage} />
+        <Route path="/add-bridge" component={AddLocation} />
         <Route path="/implicit/callback" component={LoginCallback} />
         {/* any of the routes you need secured should be registered as SecureRoutes */}
         <SecureRoute

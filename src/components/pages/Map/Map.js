@@ -13,7 +13,6 @@ import { Drawer } from 'antd';
 import ImageBox from '../ImageBox/ImageBox';
 import InfoBox from '../InfoBox/InfoBox';
 import IconGroup from '../IconGroup/IconGroup';
-import AddLocation from '../AddLocation'
 import { Card } from '@material-ui/core';
 import styled from 'styled-components';
 // import bg from '../../../bg.png';
@@ -37,7 +36,7 @@ const InfoContainer = styled.div`
   width: 90%;
   display: flex;
   flex-flow: column;
-  
+
   @media (max-width: 1024px) {
     width: 90%;
     margin: 0;
@@ -209,9 +208,6 @@ const Map = () => {
     <BigContainer>
       <InfoContainer>
         <ImageBox selectedBridge={selectedBridge} />
-        {/* insert the add location  */}
-        <AddLocation />
-
         <InfoBox selectedBridge={selectedBridge} />
       </InfoContainer>
       <MapContainer>
