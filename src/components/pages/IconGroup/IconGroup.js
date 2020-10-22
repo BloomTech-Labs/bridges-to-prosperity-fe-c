@@ -71,78 +71,72 @@ const IconGroup = () => {
         <IconDiv>
           <div>
             <div className="iconBox">
-              <div className="icons">
-                <img
-                  src="search-icon.png"
-                  alt=""
-                  onClick={() => {
-                    handleOpen();
-                  }}
-                />
+              <div
+                className="icons"
+                onClick={() => {
+                  handleOpen();
+                }}
+              >
+                <img src="search-icon.png" alt="" />
                 Search
               </div>
-              <div className="icons" value={'Complete'}>
-                <img
-                  src="bridge-icon.png"
-                  alt=""
-                  onClick={() => {
-                    setStatus('Complete');
-                  }}
-                />
+              <div
+                className="icons"
+                value={'Complete'}
+                onClick={() => {
+                  setStatus('Complete');
+                }}
+              >
+                <img src="bridge-icon.png" alt="" />
                 Completed
               </div>
-              <div className="icons">
-                <img
-                  src="construction-icon.png"
-                  alt=""
-                  onClick={() => {
-                    setStatus('Under Construction');
-                  }}
-                />
+              <div
+                className="icons"
+                onClick={() => {
+                  setStatus('Under Construction');
+                }}
+              >
+                <img src="construction-icon.png" alt="" />
                 Under Construction
               </div>
-              <div className="icons">
-                <img
-                  src="checked-icon.png"
-                  alt=""
-                  onClick={() => {
-                    setStatus('Confirmed');
-                  }}
-                />
+              <div
+                className="icons"
+                onClick={() => {
+                  setStatus('Confirmed');
+                }}
+              >
+                <img src="checked-icon.png" alt="" />
                 Confirmed
               </div>
             </div>
           </div>
           <div>
             <div className="iconBox">
-              <div className="icons">
-                <img
-                  src="binoculars-icon.png"
-                  alt=""
-                  onClick={() => {
-                    setStatus('Prospecting');
-                  }}
-                />
+              <div
+                className="icons"
+                onClick={() => {
+                  setStatus('Prospecting');
+                }}
+              >
+                <img src="binoculars-icon.png" alt="" />
                 Prospecting
               </div>
-              <div className="icons">
-                <img
-                  src="detective-icon.png"
-                  alt=""
-                  onClick={() => {
-                    setStatus('Identified');
-                  }}
-                />
+              <div
+                className="icons"
+                onClick={() => {
+                  setStatus('Identified');
+                }}
+              >
+                <img src="detective-icon.png" alt="" />
                 Identified
               </div>
-              <div className="icons">
-                <img
-                  src="rejected-icon.png"
-                  alt=""
-                  onClick={() => {
-                    setStatus('Rejected');
-                  }}
-                />
+              <div
+                className="icons"
+                onClick={() => {
+                  setStatus('Rejected');
+                }}
+              >
+                <img src="rejected-icon.png" alt="" />
                 Rejected
               </div>
             </div>
