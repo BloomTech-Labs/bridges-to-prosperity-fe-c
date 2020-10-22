@@ -25,7 +25,7 @@ const StyledCard = styled(Card)`
   }
   @media (max-width: 600px) {
     width: 45%;
-    margin: 5% 27.5%
+    margin: 5% 27.5%;
   }
 `;
 
@@ -41,7 +41,17 @@ const Search = () => {
   const dataList = searchData;
 
   //List everything to exclude with filtering
-  const exclude = ['after_img', 'before_img', 'prov_id', 'district_id', 'sector_id', 'cell_id', 'original_community_col', 'indviduals_directly_served', 'asssessment-date'];
+  const exclude = [
+    'after_img',
+    'before_img',
+    'prov_id',
+    'district_id',
+    'sector_id',
+    'cell_id',
+    'original_community_col',
+    'indviduals_directly_served',
+    'asssessment-date',
+  ];
 
   //filter function for filtering search data out of dataList
   const filterData = value => {
@@ -49,9 +59,7 @@ const Search = () => {
     if (lowercasedValue === '') setFilterDataList([]);
     else {
       const filteredData = dataList.filter(item => {
-        // console.log(dataList, item, 'DATA ITEM');
         return Object.keys(item).some(key => {
-          // console.log(key, 'KEY');
           return exclude.includes(key)
             ? false
             : item[key]
@@ -70,6 +78,7 @@ const Search = () => {
     filterData(value);
   };
 
+  // flies to selected bridge
   const FlyTo = () => {
     const flyViewport = {
       latitude: lat,
@@ -81,9 +90,6 @@ const Search = () => {
     };
     setViewport(flyViewport);
     setOpen(false);
-    // console.log(viewport);
-    // console.log(flyViewport);
-    // console.log([lat, long]);
   };
 
   const setCoord = (lat, long) => {
@@ -111,7 +117,6 @@ const Search = () => {
             <div
               className="bridgeCard"
               key={i}
-              // style={{ margin: 0 }}
               onMouseEnter={() => setCoord(d.latitude, d.longitude)}
               onClick={() => {
                 setCoord(d.latitude, d.longitude);

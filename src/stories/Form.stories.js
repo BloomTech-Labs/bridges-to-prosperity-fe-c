@@ -25,7 +25,7 @@ export const antForm = () => {
   };
 
   return (
-    <Form onFinish={values => console.log(values)} {...layout}>
+    <Form {...layout}>
       <Form.Item
         label="User Email"
         name="email"

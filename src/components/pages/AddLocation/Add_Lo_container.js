@@ -1,11 +1,10 @@
 import React, { useState, useRef } from 'react';
-import { Form, Input, InputNumber, Button, Modal, DatePicker } from 'antd';
+import { Form, Input, InputNumber, Modal, DatePicker } from 'antd';
 import { CircularProgress } from '@material-ui/core';
-import Axios, { a } from 'axios';
+import Axios from 'axios';
 
 import 'antd/dist/antd.css';
 import styled from 'styled-components';
-import { FormatClearSharp } from '@material-ui/icons';
 
 const FormContainer = styled.div`
   box-shadow: 0 0 2px black;
@@ -26,12 +25,10 @@ export default function Add_Lo_container() {
 
   const stringWidth = '70%';
 
+  // Posts new bridge
   const formSubmit = item => {
-    // const postData = { ...item, assesment_date: formData.d };
-    console.log(item);
     Axios.post('https://labs27-c-bridges-api.herokuapp.com/bridges', item)
       .then(res => {
-        console.log(res.data);
         setResults('complete');
         setAdding(true);
 
@@ -46,7 +43,6 @@ export default function Add_Lo_container() {
         }, 1250);
       })
       .catch(err => {
-        console.log(err);
         setAdding(true);
         setResults('Complete');
 
@@ -61,6 +57,7 @@ export default function Add_Lo_container() {
       });
   };
 
+  // returns a button that opens up a form to add a new bridge
   return (
     <div>
       {showForm !== true ? (
@@ -81,7 +78,7 @@ export default function Add_Lo_container() {
             {/* adding animation control */}
             {adding ? (
               <div>
-                {complete == false ? (
+                {complete === false ? (
                   //   If adding show circular progress for loading
                   <CircularProgress />
                 ) : (
@@ -96,20 +93,6 @@ export default function Add_Lo_container() {
                   onFinish={item => formSubmit(item)}
                   style={{ display: 'flex', flexDirection: 'column' }}
                 >
-                  {/* bridge Name */}
-                  {/* <Form.Item
-                    label="Bridge Name"
-                    name="bridge_name"
-                    rules={[
-                      {
-                        required: true,
-                        message: 'Please Enter A Bridge Name',
-                      },
-                    ]}
-                  >
-                    <Input style={{ width: stringWidth }} />
-                  </Form.Item> */}
-
                   {/* project code */}
                   <Form.Item
                     label="Project Code"

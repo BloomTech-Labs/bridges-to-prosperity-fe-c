@@ -1,9 +1,11 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { ContextStatus, ContextOpen } from '../Store';
 import { Paper, Modal, Backdrop } from '@material-ui/core';
 import Search from '../Search/Search';
 import styled from 'styled-components';
+import './IconGroup.css';
 
+// Styled Components
 const StyledCard = styled(Paper)`
   margin: 0 30% 10px;
   height: 10vh;
@@ -52,6 +54,7 @@ const IconGroup = () => {
 
   return (
     <>
+      {/* Search Modal */}
       <Modal
         open={open}
         onClose={handleClose}
@@ -63,10 +66,8 @@ const IconGroup = () => {
       >
         <Search />
       </Modal>
+      {/* All icons */}
       <StyledCard elevation={0}>
-        {/* Change Search Bar into a button that pops out a modal for search */}
-        {/* <Search /> */}
-
         <IconDiv>
           <div>
             <div className="iconBox">

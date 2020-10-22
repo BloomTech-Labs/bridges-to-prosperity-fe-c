@@ -2,7 +2,7 @@ import React from 'react';
 import theme from '../../../styles/theme-overrides.js';
 import styled from 'styled-components';
 import { ThemeProvider } from '@material-ui/core/styles';
-import { Typography, Fade, Slide, Link, Button, Card } from '@material-ui/core';
+import { Typography, Link, Card } from '@material-ui/core';
 
 const LearnCard = styled(Card)`
   width: 20%;

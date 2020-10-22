@@ -1,15 +1,32 @@
 import React from 'react';
-import { Card, Typography } from '@material-ui/core';
+import {
+  Typography,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+} from '@material-ui/core';
 import styled from 'styled-components';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-import { ContactSupportOutlined } from '@material-ui/icons';
+import { withStyles } from '@material-ui/core/styles';
+
+const StyledCard = styled(Paper)`
+  width: 100%;
+  display: flex;
+  margin: 1%;
+  justify-content: center;
+  align-items: center;
+`;
+
+const StyledDiv = styled.div`
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+`;
 
 const StyledTableCell = withStyles(theme => ({
   head: {
@@ -29,6 +46,7 @@ const StyledTableRow = withStyles(theme => ({
   },
 }))(TableRow);
 
+// creates array for table component
 function createData({ properties }) {
   return [
     { category: 'Project Code', data: properties.project_code },
@@ -49,36 +67,15 @@ function createData({ properties }) {
   ];
 }
 
-const StyledCard = styled(Paper)`
-  width: 100%;
-  display: flex;
-  margin: 1%;
-  justify-content: center;
-  align-items: center;
-`;
-
-const StyledDiv = styled.div`
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-`;
-
+// returns a table containing selected bridge information, utilizes createData
 const InfoBox = ({ selectedBridge }) => {
-  console.log(selectedBridge, 'selected bridge');
   let rows = [];
-  // selectedBridge
-  //   ? selectedBridge.selectedBridge.properties.keys().forEach(category => {
-  //       rows.push({ [category]: selectedBridge.properties[category] });
-  //     })
-  //   : console.log(selectedBridge);
   if (selectedBridge) {
     rows = createData(selectedBridge);
-    console.log(selectedBridge, rows);
   }
   return (
     <StyledCard elevation={15}>
+      {/* Returns table component if a bridge has been selected */}
       {selectedBridge ? (
         <TableContainer component={StyledDiv}>
           <Table className={StyledTableRow.table} aria-label="customized table">

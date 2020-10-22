@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { ThemeProvider } from '@material-ui/core/styles';
 import {
   Typography,
-  Fade,
   Slide,
   Link,
   Button,
@@ -33,7 +32,7 @@ const HomeDiv = styled.div`
   padding: 25px;
 `;
 
-const TestDiv = styled.div`
+const SlidingBackground = styled.div`
   position: absolute;
   background-color: #66c3e3;
   width: 100%;
@@ -44,7 +43,7 @@ const TestDiv = styled.div`
   }
 `;
 
-const TestDivTwo = styled.div`
+const LinkHoverBackground = styled.div`
   position: absolute;
   background-color: white;
   width: 25%;
@@ -83,7 +82,7 @@ const InfoLink = styled(Link)`
   width: 25%;
   height: 10vh;
   padding: 3.5% 0;
-  
+
   @media (max-width: 600px) {
     padding: 0;
     margin: 0;
@@ -110,48 +109,75 @@ theme.typography.h4 = {
 };
 
 const NavBar = () => {
+  // State for mousing over the navbar
   const [mouseOver, setMouseOver] = useState(false);
+
+  // State for mousing over the Learn link
   const [infoOver, setInfoOver] = useState(false);
+
+  // State for mousing over the Partner link
   const [partnerOver, setPartnerOver] = useState(false);
+
+  // State for mousing over the Action link
   const [actionOver, setActionOver] = useState(false);
+
+  // State for opening the Learn modal
   const [openInfo, setOpenInfo] = useState(false);
+
+  // State for opening the Partner modal
   const [openPartner, setOpenPartner] = useState(false);
+
+  // State for opening the Action modal
   const [openAction, setOpenAction] = useState(false);
+
+  // Handler for mousing over the navbar
   const handleChange = () => {
-    //  To reduce the other functions, switch case detecting the id of the element being moused over.
     setMouseOver(prev => !prev);
   };
+
+  // Handler for mousing over the Learn link
   const handleInfoOver = () => {
     setInfoOver(prev => !prev);
   };
+
+  // Handler for opening the Learn modal
   const handleLearnClick = () => {
     setOpenInfo(prev => !prev);
+    setMouseOver(prev => !prev);
   };
+
+  // Handler for mousing over the Partner link
   const handlePartnerOver = () => {
     setPartnerOver(prev => !prev);
   };
+
+  // Handler for opening the Partner modal
   const handlePartnerClick = () => {
     setOpenPartner(prev => !prev);
+    setMouseOver(prev => !prev);
   };
+
+  // Handler for mousing over the Action link
   const handleActionOver = () => {
     setActionOver(prev => !prev);
   };
+
+  //Handler for opening the Action modal
   const handleActionClick = () => {
     setOpenAction(prev => !prev);
+    setMouseOver(prev => !prev);
   };
+
   return (
     <ThemeProvider theme={theme}>
-      {/* div is the whole nav bar */}
       <StyledDiv
         onMouseEnter={handleChange}
         onMouseLeave={handleChange}
         id="big_nav"
       >
         <Slide in={mouseOver} direction="right">
-          {/* testdiv is the blue background */}
-          <TestDiv></TestDiv>
+          <SlidingBackground></SlidingBackground>
         </Slide>
-        {/* styleddiv is the logo div */}
         <StyledDiv id="nav_div">
           <HomeDiv>
             <Link href="http://www.bridgestoprosperity.org" underline="none">
@@ -172,7 +198,7 @@ const NavBar = () => {
 
         <InfoDiv>
           <Slide in={infoOver} direction="down">
-            <TestDivTwo></TestDivTwo>
+            <LinkHoverBackground></LinkHoverBackground>
           </Slide>
           <InfoLink
             onMouseEnter={handleInfoOver}
@@ -195,11 +221,11 @@ const NavBar = () => {
             <LearnModal />
           </Modal>
           <Slide in={partnerOver} direction="down">
-            <TestDivTwo
+            <LinkHoverBackground
               style={{
                 marginLeft: '25%',
               }}
-            ></TestDivTwo>
+            ></LinkHoverBackground>
           </Slide>
           <InfoLink
             onMouseEnter={handlePartnerOver}
@@ -222,11 +248,11 @@ const NavBar = () => {
             <PartnerModal />
           </Modal>
           <Slide in={actionOver} direction="down">
-            <TestDivTwo
+            <LinkHoverBackground
               style={{
                 marginLeft: '50%',
               }}
-            ></TestDivTwo>
+            ></LinkHoverBackground>
           </Slide>
           <InfoLink
             onMouseEnter={handleActionOver}

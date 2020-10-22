@@ -9,28 +9,19 @@ import ReactMapGL, { Marker, NavigationControl } from 'react-map-gl';
 import axios from 'axios';
 import './mapbox-gl.css';
 import Tooltip from '@material-ui/core/Tooltip';
-import { Drawer } from 'antd';
 import ImageBox from '../ImageBox/ImageBox';
 import InfoBox from '../InfoBox/InfoBox';
 import IconGroup from '../IconGroup/IconGroup';
 import { Card } from '@material-ui/core';
 import styled from 'styled-components';
-// import bg from '../../../bg.png';
-// import bg3 from '../../../bg3.png';
-
 import {
   Context,
   ContextStatus,
   ContextStyle,
-  ContextMargin,
   ContextSearchData,
-  ContextLong,
-  ContextLat,
   ContextView,
 } from '../Store';
 import './map.css';
-import LeftSideBar from '../LeftSideBar/LeftSideBar';
-import Footer from '../Footer/Footer';
 
 const InfoContainer = styled.div`
   width: 90%;
@@ -84,21 +75,6 @@ const Map = () => {
     []
   );
 
-  const showDrawer = () => {
-    // if (visible === true) setVisible(false);
-    if (visible === false) setVisible(true);
-  };
-
-  const [visible, setVisible] = useState(false);
-
-  const onClose = () => {
-    setVisible(false);
-  };
-
-  //state of longitude and latitude for fly to function
-  const [long, setLong] = useContext(ContextLong);
-  const [lat, setLat] = useContext(ContextLat);
-
   //initial state of view when the map first renders
   const [viewport, setViewport] = useContext(ContextView);
 
@@ -122,9 +98,6 @@ const Map = () => {
 
   //state for changing the map style attribute
   const [style, setStyle] = useContext(ContextStyle);
-
-  //margin state for moving the button that controls the sidebar
-  const [collapseMargin, setCollapseMargin] = useContext(ContextMargin);
 
   //array that all the bridge data is pushed to before formatted to GeoJson
   const array = [];
@@ -174,7 +147,6 @@ const Map = () => {
           project_code: data[i].project_code,
           bridge_site_name: data[i].bridge_site_name,
           bridge_type: data[i].bridge_type,
-          district_id: data[i].district_id,
           district: data[i].district,
           province: data[i].province,
           project_stage: data[i].project_stage,
@@ -194,22 +166,14 @@ const Map = () => {
     }
   }
 
-  // allows user to press "ESC" key to exit popup
-  // useEffect(() => {
-  //   const listener = e => {
-  //     if (e.key === 'Escape') {
-  //       setSelectedBridge(null);
-  //     }
-  //   };
-  //   window.addEventListener('keydown', listener);
-  // }, []);
-
   return (
     <BigContainer>
+      {/* Container for information provided */}
       <InfoContainer>
         <ImageBox selectedBridge={selectedBridge} />
         <InfoBox selectedBridge={selectedBridge} />
       </InfoContainer>
+      {/* Container for the map and icons */}
       <MapContainer>
         <IconGroup />
         <Card>
@@ -222,9 +186,6 @@ const Map = () => {
             //enable dragging
             onViewportChange={handleViewportChange}
           >
-            {/* <div className="sidebar">
-            <LeftSideBar />
-          </div> */}
             {/* Maps through all the data in bridges.json grabbing lat and lon to display markers */}
             {bridge.features.map(bridge => (
               <Marker
@@ -250,17 +211,11 @@ const Map = () => {
                       e.preventDefault();
                       setSelectedBridge(bridge);
                       setState({ bridge });
-                      showDrawer();
-                      console.log(selectedBridge);
                     }}
                   />
                 </Tooltip>
               </Marker>
             ))}
-
-            {/* <div className="footerHolder">
-              <Footer />
-            </div> */}
             {/* controls for zooming in and out*/}
             <div className="zoom-controls">
               <NavigationControl
@@ -279,37 +234,22 @@ const Map = () => {
             >
               {toggle ? (
                 <div className="sat-button">
-                  <img className="satellite" src="./mapButton.png" />
+                  <img
+                    className="satellite"
+                    src="./mapButton.png"
+                    alt="swap to satellite view"
+                  />
                 </div>
               ) : (
                 <div className="nav-button">
-                  <img className="satellite" src="./satelliteButton.png" />
+                  <img
+                    className="satellite"
+                    src="./satelliteButton.png"
+                    alt="swap to normal view"
+                  />
                 </div>
               )}
             </div>
-
-            {/* <Drawer
-            className="infoDrawer"
-            title={<h2>Bridge Info</h2>}
-            drawerStyle={{ backgroundColor: 'white' }}
-            placement="right"
-            closable={true}
-            onClose={onClose}
-            visible={visible}
-            mask={false}
-            maskClosable={true}
-            overflow={false}
-          >
-            <h3>Bridge Name: {state.bridge.properties.bridge_name}</h3>
-            <h3>Province: {state.bridge.properties.province_name}</h3>
-            <h3>District: {state.bridge.properties.district_name}</h3>
-            <h3>Project Stage: {state.bridge.properties.project_stage}</h3>
-            <h3>Project Code: {state.bridge.properties.project_code}</h3>
-            <h3>Bridge Type: {state.bridge.properties.bridge_type}</h3>
-            <h3>
-              Individuals Served: {state.bridge.properties.individuals_served}
-            </h3>
-          </Drawer> */}
           </ReactMapGL>
         </Card>
       </MapContainer>

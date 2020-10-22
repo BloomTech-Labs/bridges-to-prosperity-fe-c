@@ -14,8 +14,8 @@ const RenderGraphPage = props => {
 
   const prop = { ...props };
   const bridgeData = prop.props.props;
-  console.log(bridgeData);
 
+  // temporary dummy data until DS provides
   const trace1 = {
     y: [5500, 200, 3302],
     x: ['Total Population', 'Total Served', 'Growth'],
@@ -45,6 +45,7 @@ const RenderGraphPage = props => {
     backgroundColor: '#D6D1CA',
   };
 
+  // State for spinner
   const [showProgress, setProgress] = useState(false);
 
   useEffect(() => {
