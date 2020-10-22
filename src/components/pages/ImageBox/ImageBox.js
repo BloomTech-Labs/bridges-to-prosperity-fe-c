@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Paper } from '@material-ui/core';
 import styled from 'styled-components';
 import Gallery from '../Gallery/GalleryComp';
@@ -12,19 +12,8 @@ const StyledCard = styled(Paper)`
   align-items: center;
 `;
 
-const ImageDiv = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
 const ImageBox = selectedBridge => {
-  //   console.log(selectedBridge.selectedBridge.properties.after_img, 'HERE');
-
-  // const props = selectedBridge.selectedBridge.properties;
-  // const beforeImg = selectedBridge.selectedBridge.properties.before_img;
-  // const afterImg = selectedBridge.selectedBridge.properties.after_img;
+  // if statement required in the case there is nothing selected (first render)
   if (selectedBridge.selectedBridge) {
     const images = [];
     if (selectedBridge.selectedBridge.properties.before_img) {
@@ -37,7 +26,7 @@ const ImageBox = selectedBridge => {
         src: selectedBridge.selectedBridge.properties.after_img,
       });
     }
-
+    // Returns Material-UI Gallery component with images provided.
     return (
       <StyledCard elevation={15}>
         <Gallery photos={images} />
@@ -54,4 +43,3 @@ const ImageBox = selectedBridge => {
 };
 
 export default ImageBox;
-// testing

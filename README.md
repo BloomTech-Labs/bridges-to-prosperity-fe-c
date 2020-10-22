@@ -1,8 +1,7 @@
 #  Bridges to Prosperity
 
-##### https://main.d2gmbwiyrajcos.amplifyapp.com/ --- Deployed Site
-### https://youtu.be/fYHp5s21uws --- Stakeholder Demo at end of Labs25
-### https://youtu.be/yhBqqsxCLm4 --- Demo for Labs27 Team
+##### https://27-c.bridgestoprosperity.dev/ --- Deployed Site
+### https://lambdaschool.zoom.us/rec/share/0fOpWi6R_TUgMMcVfrEL9fzJmIVRJhz1cykKCHuZcNCK9xSsDyAd3gTjv1quCNU.1FotfVf0Er4oL0D9 --- Product Demo
 
 
 ## Contributors
@@ -19,9 +18,9 @@
 
 ## Project Overview
 
- Trello Board - https://trello.com/b/xnDcYuZ4/labs25bridgesshota
+ Trello Board - https://trello.com/b/cqF7rfsH/labs-27-bridges-to-prosperity-team-c
 
- Product Canvas - https://whimsical.com/LJC7f3n28cAwvU2uSrKYri
+ Product Canvas - https://whimsical.com/13fpjg5hPEKj4dLN7qBGmT
 
  UX Design files - Files provided by stakeholder 
     Brand Guide and Assets 

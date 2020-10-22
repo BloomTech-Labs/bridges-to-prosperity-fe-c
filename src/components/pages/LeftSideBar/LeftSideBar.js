@@ -1,9 +1,11 @@
+// obsolete file at the moment
+
 import React, { useContext, useState } from 'react';
 import { Drawer } from 'antd';
 import Search from '../Search/Search';
 import { ContextStatus, ContextMargin } from '../Store';
 import '../Map/map.css';
-import './LeftSideBar.css';
+// import './LeftSideBar.css';
 
 const LeftSideBar = () => {
   const [visible, setVisible] = useState(true);
