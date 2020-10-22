@@ -3,8 +3,6 @@ import { Layout } from 'antd';
 import './Main.css';
 import Map from '../Map/Map';
 import Store from '../Store';
-import ImageBox from '../ImageBox/ImageBox';
-import { Card } from '@material-ui/core';
 import styled from 'styled-components';
 import NavBar from '../NavBar/NavBar';
 
