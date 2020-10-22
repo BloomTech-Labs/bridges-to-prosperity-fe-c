@@ -111,13 +111,13 @@ const IconGroup = () => {
             </div>
           </div>
           <div>
-            <div
-              className="iconBox"
-              onClick={() => {
-                setStatus('Prospecting');
-              }}
-            >
-              <div className="icons">
+            <div className="iconBox">
+              <div
+                className="icons"
+                onClick={() => {
+                  setStatus('Prospecting');
+                }}
+              >
                 <img src="binoculars-icon.png" alt="" />
                 Prospecting
               </div>
