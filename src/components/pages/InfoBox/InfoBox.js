@@ -49,7 +49,7 @@ function createData({ properties }) {
   ];
 }
 
-const StyledCard = styled(Card)`
+const StyledCard = styled(Paper)`
   width: 100%;
   display: flex;
   margin: 1%;
@@ -78,7 +78,7 @@ const InfoBox = ({ selectedBridge }) => {
     console.log(selectedBridge, rows);
   }
   return (
-    <StyledCard>
+    <StyledCard elevation={15}>
       {selectedBridge ? (
         <TableContainer component={StyledDiv}>
           <Table className={StyledTableRow.table} aria-label="customized table">

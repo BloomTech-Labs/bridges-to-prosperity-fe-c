@@ -9,6 +9,7 @@ const RenderGraphPage = props => {
     width: 33.3%;
     margin: 0 auto;
     padding: 2%;
+    background-color: #d6d1ca;
   `;
 
   const prop = { ...props };
@@ -41,6 +42,7 @@ const RenderGraphPage = props => {
     font: { size: 13 },
     showlegend: true,
     position: 'center',
+    backgroundColor: '#D6D1CA',
   };
 
   const [showProgress, setProgress] = useState(false);
